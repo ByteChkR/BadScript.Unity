@@ -8,11 +8,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>BadScript.Unity.Zip</RootNamespace>
-    <ProjectGuid>{7B252B9C-D453-A5BA-A525-2E12F9F5BED2}</ProjectGuid>
+    <RootNamespace></RootNamespace>
+    <ProjectGuid>{9F186249-879D-F08B-EEA2-7D57AD4FA1B4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>BadScript.Unity.Zip</AssemblyName>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -53,11 +53,7 @@
     <UnityVersion>2020.3.12f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\BadScript\Interfaces\Zip\Scripts\BadScriptZipInterface.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\BadScript\Interfaces\Zip\BadScript.Zip.dll" />
-    <None Include="Assets\BadScript\Interfaces\Zip\BadScript.Unity.Zip.asmdef" />
+    <Compile Include="Assets\Testing\TestComponent.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -281,15 +277,6 @@
     </Reference>
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>D:\UnityEditors\2020.3.12f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.Graphs">
-      <HintPath>D:\UnityEditors\2020.3.12f1\Editor\Data\Managed\UnityEditor.Graphs.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
-      <HintPath>D:\UnityEditors\2020.3.12f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
-      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\15.0\Editor\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="BadScript.Zip">
       <HintPath>Assets\BadScript\Interfaces\Zip\BadScript.Zip.dll</HintPath>
@@ -669,17 +656,74 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>D:\UnityEditors\2020.3.12f1\Editor\Data\NetStandard\compat\2.0.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.VSCode.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualStudio.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline">
+      <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Rider.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="BadScript.Unity.IO.csproj">
+      <Project>{724D5FA6-B846-09BB-E1A0-1EFB378BA401}</Project>
+      <Name>BadScript.Unity.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="BadScript.Unity.Http.csproj">
+      <Project>{0D28CAA6-E490-BA82-22FE-59D5B6E987A9}</Project>
+      <Name>BadScript.Unity.Http</Name>
+    </ProjectReference>
+    <ProjectReference Include="BadScript.Unity.Math.csproj">
+      <Project>{6E41FCEA-7F22-0930-09A7-F79823E0EB27}</Project>
+      <Name>BadScript.Unity.Math</Name>
+    </ProjectReference>
+    <ProjectReference Include="BadScript.Unity.Console.csproj">
+      <Project>{704463CE-E36F-D5B8-EC43-7660769C2BDB}</Project>
+      <Name>BadScript.Unity.Console</Name>
+    </ProjectReference>
+    <ProjectReference Include="BadScript.Unity.Json.csproj">
+      <Project>{44E13613-2C71-ADE6-1211-A01B3C05051C}</Project>
+      <Name>BadScript.Unity.Json</Name>
+    </ProjectReference>
+    <ProjectReference Include="BadScript.Unity.StringUtils.csproj">
+      <Project>{EB00A61D-37EE-63F8-2CE6-A5A962CBD4C6}</Project>
+      <Name>BadScript.Unity.StringUtils</Name>
+    </ProjectReference>
     <ProjectReference Include="BadScript.Unity.csproj">
       <Project>{DD243DD2-95EA-8BD9-D238-3DC506E1148F}</Project>
       <Name>BadScript.Unity</Name>
+    </ProjectReference>
+    <ProjectReference Include="BadScript.Unity.Zip.csproj">
+      <Project>{7B252B9C-D453-A5BA-A525-2E12F9F5BED2}</Project>
+      <Name>BadScript.Unity.Zip</Name>
+    </ProjectReference>
+    <ProjectReference Include="BadScript.Unity.Core.csproj">
+      <Project>{4FEE9BEA-94D9-654B-FE6C-78E134E7DB56}</Project>
+      <Name>BadScript.Unity.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="BadScript.Unity.Xml.csproj">
+      <Project>{4C06B519-ACA2-DAC0-6A97-7F1FDA47B259}</Project>
+      <Name>BadScript.Unity.Xml</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

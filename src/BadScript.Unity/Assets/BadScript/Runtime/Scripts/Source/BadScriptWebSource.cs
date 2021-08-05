@@ -10,13 +10,13 @@ namespace BadScript.Unity
     {
         [SerializeField]
         [Tooltip("The Bad Script Source Url")]
-        private string m_SourceUrl;
+        private string m_SourceUrl = "";
         [SerializeField]
         [Tooltip("If set to true, the runtime will print the ellapsed time")]
-        private bool m_IsBenchmark;
+        private bool m_IsBenchmark = false;
         [SerializeField]
         [Tooltip("The Arguments that are passed to the script. Name inside the script: 'args'")]
-        private string[] m_Arguments;
+        private string[] m_Arguments = new string[0];
         public override ABSObject Run(BSEngine engine)
         {
             using (WebClient wc = new WebClient())

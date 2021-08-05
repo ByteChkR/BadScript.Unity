@@ -53,13 +53,17 @@
     <UnityVersion>2020.3.12f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\BadScript\Runtime\Scripts\BadScriptRuntimeComponent.cs" />
+    <Compile Include="Assets\BadScript\Runtime\Scripts\Source\BadScriptWebSource.cs" />
     <Compile Include="Assets\BadScript\Runtime\Scripts\BadScriptSettingsObject.cs" />
-    <Compile Include="Assets\BadScript\Runtime\Scripts\BadScriptInterfaceObject.cs" />
     <Compile Include="Assets\BadScript\Runtime\Scripts\Source\BadScriptSource.cs" />
+    <Compile Include="Assets\BadScript\Runtime\Scripts\BadScriptInterfaceObject.cs" />
+    <Compile Include="Assets\BadScript\Runtime\Scripts\BadScriptRuntimeComponent.cs" />
     <Compile Include="Assets\BadScript\Runtime\Scripts\Source\BadScriptFileSource.cs" />
     <Compile Include="Assets\BadScript\Runtime\Scripts\Source\BadScriptTextSource.cs" />
-    <Compile Include="Assets\BadScript\Runtime\Scripts\Source\BadScriptWebSource.cs" />
+    <Compile Include="Assets\BadScript\Runtime\Scripts\Utils\Singleton.cs" />
+    <Compile Include="Assets\BadScript\Runtime\Scripts\Utils\Expressions\BadScriptExpressionArgument.cs" />
+    <Compile Include="Assets\BadScript\Runtime\Scripts\Utils\Expressions\BadScriptExpressionArgumentTypeHint.cs" />
+    <Compile Include="Assets\BadScript\Runtime\Scripts\Utils\Expressions\BadScriptValue.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\BadScript\Runtime\BadScript.Unity.asmdef" />
@@ -298,38 +302,38 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\15.0\Editor\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
+    <Reference Include="BadScript.Zip">
+      <HintPath>Assets\BadScript\Interfaces\Zip\BadScript.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="BadScript.StringUtils">
+      <HintPath>Assets\BadScript\Interfaces\StringUtils\BadScript.StringUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="BadScript.Http">
+      <HintPath>Assets\BadScript\Interfaces\Http\BadScript.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="BadScript.ConsoleUtils">
+      <HintPath>Assets\BadScript\Interfaces\Console\BadScript.ConsoleUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="BadScript.Math">
+      <HintPath>Assets\BadScript\Interfaces\Math\BadScript.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="BadScript.Xml">
+      <HintPath>Assets\BadScript\Interfaces\Xml\BadScript.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="BadScript.Core">
+      <HintPath>Assets\BadScript\Interfaces\Core\BadScript.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="BadScript.IO">
+      <HintPath>Assets\BadScript\Interfaces\IO\BadScript.IO.dll</HintPath>
+    </Reference>
     <Reference Include="BadScript">
       <HintPath>Assets\BadScript\Runtime\BadScript.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Assets\BadScript\Runtime\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="BadScript.ConsoleUtils">
-      <HintPath>Assets\BadScript\Interfaces\Console\BadScript.ConsoleUtils.dll</HintPath>
-    </Reference>
-    <Reference Include="BadScript.Core">
-      <HintPath>Assets\BadScript\Interfaces\Core\BadScript.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="BadScript.Http">
-      <HintPath>Assets\BadScript\Interfaces\Http\BadScript.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="BadScript.IO">
-      <HintPath>Assets\BadScript\Interfaces\IO\BadScript.IO.dll</HintPath>
-    </Reference>
     <Reference Include="BadScript.Json">
       <HintPath>Assets\BadScript\Interfaces\Json\BadScript.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="BadScript.Math">
-      <HintPath>Assets\BadScript\Interfaces\Math\BadScript.Math.dll</HintPath>
-    </Reference>
-    <Reference Include="BadScript.StringUtils">
-      <HintPath>Assets\BadScript\Interfaces\StringUtils\BadScript.StringUtils.dll</HintPath>
-    </Reference>
-    <Reference Include="BadScript.Xml">
-      <HintPath>Assets\BadScript\Interfaces\Xml\BadScript.Xml.dll</HintPath>
-    </Reference>
-    <Reference Include="BadScript.Zip">
-      <HintPath>Assets\BadScript\Interfaces\Zip\BadScript.Zip.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:\UnityEditors\2020.3.12f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>

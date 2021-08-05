@@ -15,7 +15,6 @@ MonoBehaviour:
   AllowOptimizations: 1
   AddEnvironmentApi: 1
   AvailableInterfaces:
-  - {fileID: 11400000, guid: 4bb9cf2eccd434547ae4dd765d9090ed, type: 2}
   - {fileID: 11400000, guid: d4e20cb470bd7f34f9573cf8d16714b5, type: 2}
   - {fileID: 11400000, guid: 3bbd274263af6b94f90e39a559b08acb, type: 2}
   - {fileID: 11400000, guid: a898653a8d4c08d42afa3272a9953133, type: 2}
@@ -26,6 +25,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 29781d84ce3628e4eb47b2e84ce1722f, type: 2}
   - {fileID: 11400000, guid: 7f9be289069e3fa48b3666cf46025293, type: 2}
   - {fileID: 11400000, guid: b271d7ccf8c7e98428455a8e83b34009, type: 2}
+  - {fileID: 11400000, guid: 4bb9cf2eccd434547ae4dd765d9090ed, type: 2}
   DefaultInterfaces:
   - '#console'
   - '#core'
