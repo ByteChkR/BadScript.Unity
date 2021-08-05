@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa606bc7cd41b4c48a21b5f876479f5c, type: 3}
+  m_Name: HelloWorldExample
+  m_EditorClassIdentifier: 
+  m_Source: "if(args.size() == 0)\n{\n\tprint(\"Hello World!!\")\n}\nelse\n{\n\tprint(\"Hello
+    \" + args[0])\n}"
+  m_IsBenchmark: 0
+  m_Arguments:
+  - Byt3

@@ -1,0 +1,16 @@
+{
+    "name": "BadScript.Unity.StringUtils",
+    "rootNamespace": "BadScript.Unity.StringUtils",
+    "references": [
+        "GUID:9292d5ef4ba08e14ab78278761974713"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
