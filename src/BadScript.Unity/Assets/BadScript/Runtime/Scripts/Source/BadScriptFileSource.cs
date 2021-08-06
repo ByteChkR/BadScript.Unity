@@ -8,6 +8,9 @@ namespace BadScript.Unity
     [CreateAssetMenu(menuName = "BadScript/Scripts/FileSource")]
     public class BadScriptFileSource : BadScriptSource
     {
+
+        [Note("BadScript File Source will load the Script from the specified path.")]
+
         [SerializeField]
         [Tooltip("The Bad Script Source Path")]
         private string m_SourcePath = "";

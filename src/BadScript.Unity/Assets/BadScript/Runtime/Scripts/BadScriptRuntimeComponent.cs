@@ -13,6 +13,7 @@ namespace BadScript.Unity
     {
         private BSEngine m_Engine;
 
+        [Note("Wrapper for the BSEngine Instance that is used when executing BadScript Code.")]
         [Tooltip("Settings for the BadScript Runtime")]
         public BadScriptSettingsObject EngineSettings;
 

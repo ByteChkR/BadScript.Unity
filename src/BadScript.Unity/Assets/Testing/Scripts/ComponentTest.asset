@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa606bc7cd41b4c48a21b5f876479f5c, type: 3}
+  m_Name: ComponentTest
+  m_EditorClassIdentifier: 
+  m_IsBenchmark: 0
+  m_Source: "function Awake()\n{\n\tprint(\"Awake\")\n}\n\nfunction Start()\n{\n\tprint(\"Start\")\n}\n\nupdate
+    = 1\nfixedUpdate = 1\n\nfunction Update()\n{\n\tif(update)\n\t{\n\t\tupdate =
+    0\n\t\tprint(\"Update\")\n\t}\n}\n\nfunction FixedUpdate()\n{\n\tif(fixedUpdate)\n\t{\n\t\tfixedUpdate
+    = 0\n\t\tprint(\"Fixed Update\")\n\t}\n}"
+  m_Arguments: []

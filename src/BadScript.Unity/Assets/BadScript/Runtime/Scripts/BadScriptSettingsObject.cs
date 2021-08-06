@@ -12,7 +12,9 @@ namespace BadScript.Unity
     [CreateAssetMenu(menuName = "BadScript/Settings")]
     public class BadScriptSettingsObject : ScriptableObject
     {
-       
+        [Note("Settings Object that holds all the configurations needed for the BadScriptRuntimeComponent")]
+
+
         [Header( "Parser Settings" )]
         [Tooltip("Optimize Constant Expressions like '1+45'")]
         public bool AllowOptimizations = true;

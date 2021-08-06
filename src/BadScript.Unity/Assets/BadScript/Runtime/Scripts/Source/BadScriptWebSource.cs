@@ -8,6 +8,7 @@ namespace BadScript.Unity
     [CreateAssetMenu(menuName = "BadScript/Scripts/WebSource")]
     public class BadScriptWebSource : BadScriptSource
     {
+        [Note("BadScript Web Source will load the Script from the specified URL by performing a GET Request.")]
         [SerializeField]
         [Tooltip("The Bad Script Source Url")]
         private string m_SourceUrl = "";

@@ -7,6 +7,7 @@ using BadScript.ConsoleUtils;
 using BadScript.Interfaces;
 using UnityEngine;
 using BadScript.Unity;
+using UnityEditor;
 
 namespace BadScript.Unity.Console
 {
@@ -14,6 +15,7 @@ namespace BadScript.Unity.Console
     public class BadScriptUnityConsoleInterface : BadScriptInterfaceObject
     {
 
+        [Note("Unity Console has the same implementations for Write and WriteLine", MessageType.Warning)]
         [Header( "Console Output" )]
         public bool UseUnityConsole = true;
         public event Action OnClear;
