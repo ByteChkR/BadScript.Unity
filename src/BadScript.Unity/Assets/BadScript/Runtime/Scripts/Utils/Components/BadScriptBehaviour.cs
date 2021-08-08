@@ -18,7 +18,8 @@ namespace BadScript.Unity
 
         private void Populate()
         {
-            ABSObject o = BadScriptRuntimeComponent.Instance.Run( m_ScriptSource );
+            ABSObject o = BadScriptRuntimeComponent.Instance.Run(
+                m_ScriptSource );
 
             if (o.HasProperty("Start"))
             {

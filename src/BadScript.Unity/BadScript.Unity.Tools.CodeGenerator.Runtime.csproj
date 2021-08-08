@@ -8,11 +8,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>BadScript.Unity.Zip</RootNamespace>
-    <ProjectGuid>{7B252B9C-D453-A5BA-A525-2E12F9F5BED2}</ProjectGuid>
+    <RootNamespace>BadScript.Unity.Tools.CodeGenerator.Runtime</RootNamespace>
+    <ProjectGuid>{B20A6ADE-C4FE-9DEE-6313-F8F4E4286E3B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>BadScript.Unity.Zip</AssemblyName>
+    <AssemblyName>BadScript.Unity.Tools.CodeGenerator.Runtime</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -53,11 +53,11 @@
     <UnityVersion>2020.3.12f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\BadScript\Interfaces\Zip\Scripts\BadScriptZipInterface.cs" />
+    <Compile Include="Assets\BadScript\Tools\CodeGenerator\Runtime\RuntimeCodeGenHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\BadScript\Interfaces\Zip\BadScript.Zip.dll" />
-    <None Include="Assets\BadScript\Interfaces\Zip\BadScript.Unity.Zip.asmdef" />
+    <None Include="Assets\BadScript\Tools\CodeGenerator\Runtime\BadScript.Unity.Tools.CodeGenerator.Runtime.asmdef" />
+    <None Include="Assets\BadScript\Tools\CodeGenerator\Runtime\BadScript.Tools.CodeGenerator.Runtime.dll" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

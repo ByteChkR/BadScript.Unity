@@ -300,8 +300,14 @@
     <Reference Include="BadScript.Http">
       <HintPath>Assets\BadScript\Interfaces\Http\BadScript.Http.dll</HintPath>
     </Reference>
+    <Reference Include="BadScript.Tools.CodeGenerator.Runtime">
+      <HintPath>Assets\BadScript\Tools\CodeGenerator\Runtime\BadScript.Tools.CodeGenerator.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="BadScript.ConsoleUtils">
       <HintPath>Assets\BadScript\Interfaces\Console\BadScript.ConsoleUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="BadScript.Tools.CodeGenerator">
+      <HintPath>Assets\BadScript\Tools\CodeGenerator\Editor\BadScript.Tools.CodeGenerator.dll</HintPath>
     </Reference>
     <Reference Include="BadScript.Math">
       <HintPath>Assets\BadScript\Interfaces\Math\BadScript.Math.dll</HintPath>

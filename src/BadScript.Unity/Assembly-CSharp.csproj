@@ -287,6 +287,9 @@
     <Reference Include="BadScript.Http">
       <HintPath>Assets\BadScript\Interfaces\Http\BadScript.Http.dll</HintPath>
     </Reference>
+    <Reference Include="BadScript.Tools.CodeGenerator.Runtime">
+      <HintPath>Assets\BadScript\Tools\CodeGenerator\Runtime\BadScript.Tools.CodeGenerator.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="BadScript.ConsoleUtils">
       <HintPath>Assets\BadScript\Interfaces\Console\BadScript.ConsoleUtils.dll</HintPath>
     </Reference>
@@ -724,6 +727,14 @@
     <ProjectReference Include="BadScript.Unity.Xml.csproj">
       <Project>{4C06B519-ACA2-DAC0-6A97-7F1FDA47B259}</Project>
       <Name>BadScript.Unity.Xml</Name>
+    </ProjectReference>
+    <ProjectReference Include="BadScript.Unity.Tools.CodeGenerator.Runtime.csproj">
+      <Project>{B20A6ADE-C4FE-9DEE-6313-F8F4E4286E3B}</Project>
+      <Name>BadScript.Unity.Tools.CodeGenerator.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="BadScript.Unity.Tools.CodeGenerator.Editor.csproj">
+      <Project>{70FEFA20-DFE0-8C2C-3676-509BE2E2AA4D}</Project>
+      <Name>BadScript.Unity.Tools.CodeGenerator.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

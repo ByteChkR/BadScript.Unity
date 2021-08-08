@@ -1,0 +1,14 @@
+{
+    "name": "BadScript.Unity.Tools.CodeGenerator.Editor",
+    "rootNamespace": "BadScript.Unity.Tools.CodeGenerator.Editor",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -9,6 +9,7 @@ public class TestComponent : MonoBehaviour
     private BadScriptValue<decimal> MyValue;
     [SerializeField]
     private BadScriptValue<decimal> MyConstValue;
+    
 
     private void Start()
     {
@@ -17,5 +18,6 @@ public class TestComponent : MonoBehaviour
 
         decimal cv = MyConstValue; //Implicit cast if no arguments required
         Debug.Log( "Constant Value: " + cv );
-    }
+
+        }
 }

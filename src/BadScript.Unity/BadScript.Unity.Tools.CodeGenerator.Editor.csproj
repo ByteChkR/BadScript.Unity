@@ -8,11 +8,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>BadScript.Unity.Zip</RootNamespace>
-    <ProjectGuid>{7B252B9C-D453-A5BA-A525-2E12F9F5BED2}</ProjectGuid>
+    <RootNamespace>BadScript.Unity.Tools.CodeGenerator.Editor</RootNamespace>
+    <ProjectGuid>{70FEFA20-DFE0-8C2C-3676-509BE2E2AA4D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>BadScript.Unity.Zip</AssemblyName>
+    <AssemblyName>BadScript.Unity.Tools.CodeGenerator.Editor</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -48,16 +48,16 @@
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
     <UnityProjectGeneratorVersion>2.0.8</UnityProjectGeneratorVersion>
-    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2020.3.12f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\BadScript\Interfaces\Zip\Scripts\BadScriptZipInterface.cs" />
+    <Compile Include="Assets\BadScript\Tools\CodeGenerator\Editor\CodeGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\BadScript\Interfaces\Zip\BadScript.Zip.dll" />
-    <None Include="Assets\BadScript\Interfaces\Zip\BadScript.Unity.Zip.asmdef" />
+    <None Include="Assets\BadScript\Tools\CodeGenerator\Editor\BadScript.Unity.Tools.CodeGenerator.Editor.asmdef" />
+    <None Include="Assets\BadScript\Tools\CodeGenerator\Editor\BadScript.Tools.CodeGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -683,10 +683,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="BadScript.Unity.csproj">
-      <Project>{DD243DD2-95EA-8BD9-D238-3DC506E1148F}</Project>
-      <Name>BadScript.Unity</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
