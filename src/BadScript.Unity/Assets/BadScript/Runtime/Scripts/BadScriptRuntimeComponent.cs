@@ -11,7 +11,8 @@ namespace BadScript.Unity
 
     public class BadScriptRuntimeComponent : Singleton <BadScriptRuntimeComponent>
     {
-        private BSEngine m_Engine;
+        public BSEngine Engine { get; private set; }
+
 
         [Note("Wrapper for the BSEngine Instance that is used when executing BadScript Code.")]
         [Tooltip("Settings for the BadScript Runtime")]
@@ -22,21 +23,21 @@ namespace BadScript.Unity
         protected override void Awake()
         {
             base.Awake();
-            m_Engine = EngineSettings.Build();
+            Engine = EngineSettings.Build();
 
             foreach ( BadScriptSource badScriptSource in StartupScripts )
             {
-                badScriptSource.Run( m_Engine );
+                badScriptSource.Run( Engine );
             }
         }
 
-        public BSScope CreateScope() => new BSScope( m_Engine );
+        public BSScope CreateScope() => new BSScope( Engine );
 
-        public ABSObject Run(string script, ABSObject[] args) => m_Engine.LoadString(false, script, args);
-        public ABSObject Run(string script, string[] args) => m_Engine.LoadString(false, script, args);
-        public ABSObject Run(BSScope scope, string script, ABSObject[] args) => m_Engine.LoadString(false, scope, script, args);
-        public ABSObject Run(BSScope scope, string script, string[] args) => m_Engine.LoadString(false, scope, script, args);
+        public ABSObject Run(string script, ABSObject[] args) => Engine.LoadString(false, script, args);
+        public ABSObject Run(string script, string[] args) => Engine.LoadString(false, script, args);
+        public ABSObject Run(BSScope scope, string script, ABSObject[] args) => Engine.LoadString(false, scope, script, args);
+        public ABSObject Run(BSScope scope, string script, string[] args) => Engine.LoadString(false, scope, script, args);
 
-        public ABSObject Run( BadScriptSource script ) => script.Run( m_Engine );
+        public ABSObject Run( BadScriptSource script ) => script.Run( Engine );
     }
 }

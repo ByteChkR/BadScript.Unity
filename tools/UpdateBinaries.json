@@ -1,0 +1,17 @@
+{
+  "ProjectRoot": "./deps/BadScript/src",
+  "CopyTargets": {
+    "BadScript": "./src/BadScript.Unity/Assets/BadScript/Runtime",
+    "BadScript.ConsoleUtils": "./src/BadScript.Unity/Assets/BadScript/Interfaces/Console",
+    "BadScript.Core": "./src/BadScript.Unity/Assets/BadScript/Interfaces/Core",
+    "BadScript.Http": "./src/BadScript.Unity/Assets/BadScript/Interfaces/Http",
+    "BadScript.IO": "./src/BadScript.Unity/Assets/BadScript/Interfaces/IO",
+    "BadScript.Json": "./src/BadScript.Unity/Assets/BadScript/Interfaces/Json",
+    "BadScript.Math": "./src/BadScript.Unity/Assets/BadScript/Interfaces/Math",
+    "BadScript.StringUtils": "./src/BadScript.Unity/Assets/BadScript/Interfaces/StringUtils",
+    "BadScript.Xml": "./src/BadScript.Unity/Assets/BadScript/Interfaces/Xml",
+    "BadScript.Zip": "./src/BadScript.Unity/Assets/BadScript/Interfaces/Zip",
+    "BadScript.Tools.CodeGenerator.Runtime": "./src/BadScript.Unity/Assets/BadScript/Tools/CodeGenerator/Runtime",
+    "BadScript.Tools.CodeGenerator": "./src/BadScript.Unity/Assets/BadScript/Tools/CodeGenerator/Editor",
+  }
+}

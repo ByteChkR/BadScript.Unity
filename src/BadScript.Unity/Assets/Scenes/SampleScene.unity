@@ -431,6 +431,9 @@ MonoBehaviour:
     m_IsMultiLineExpression: 0
     m_Expression: 1337 + 420 + 69
     Arguments: []
+  WrapperTest: 'environment.loadInterface("unity")
+
+    print(debug(unity))'
 --- !u!4 &1222486525
 Transform:
   m_ObjectHideFlags: 0

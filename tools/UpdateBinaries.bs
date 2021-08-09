@@ -1,0 +1,52 @@
+environment.loadInterface("process")
+environment.loadInterface("fs")
+environment.loadInterface("path")
+environment.loadInterface("json")
+
+function loadConfig(!cfgPath)
+{
+	if(fs.exists(cfgPath))
+	{
+		data = fs.readAll(cfgPath)
+		return json.fromJson(data)
+	}
+	else
+	{
+		data = {
+			ProjectRoot = "",
+			CopyTargets = {
+				ProjectName = "OutputDir"
+			}
+		}
+		fs.writeAll(cfgPath, json.toJson(data))
+		error("Can not Find Config. Writing Default Config")
+	}
+}
+
+function build(!projDir)
+{
+	process.start("dotnet", "publish " + projDir + " -c Release").waitForExit()
+}
+
+function copyLibs(projRoot, projName, outDir)
+{
+	publishPath = path.combine(projRoot, projName, "bin", "Release", "netstandard2.0", "publish")
+	files = fs.getFiles(publishPath, projName + ".*")
+	foreach file in files
+	{
+		outFile = path.combine(outDir, path.getFileName(file))
+		print(file + " => " + outFile)
+		fs.copy(file, outFile)
+	}
+}
+
+cfg = loadConfig("./tools/UpdateBinaries.json")
+
+print("Building Project..")
+build(cfg.ProjectRoot)
+clear()
+print("Copy Libs: ")
+foreach (name, dir) in cfg.CopyTargets
+{
+	copyLibs(cfg.ProjectRoot, name, dir)
+}
