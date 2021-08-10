@@ -431,9 +431,9 @@ MonoBehaviour:
     m_IsMultiLineExpression: 0
     m_Expression: 1337 + 420 + 69
     Arguments: []
-  WrapperTest: 'environment.loadInterface("unity")
-
-    print(debug(unity))'
+  WrapperTest: "environment.loadInterface(\"fs\")\nenvironment.loadInterface(\"unity\")\ntransform
+    = args[0].transform\nposition = transform.position\n\ndbg = \"\"\nforeach k in
+    unity\n{\n\tdbg += (k+\"\\n\")\n}\n\nfs.writeAll(\"./dbg.log\", dbg)"
 --- !u!4 &1222486525
 Transform:
   m_ObjectHideFlags: 0

@@ -53,7 +53,7 @@
     <UnityVersion>2020.3.12f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\BadScript\Tools\CodeGenerator\Runtime\RuntimeCodeGenHelper.cs" />
+    <Compile Include="Assets\BadScript\Tools\CodeGenerator\Runtime\RuntimeCodeGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\BadScript\Tools\CodeGenerator\Runtime\BadScript.Unity.Tools.CodeGenerator.Runtime.asmdef" />

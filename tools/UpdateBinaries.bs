@@ -35,7 +35,7 @@ function copyLibs(projRoot, projName, outDir)
 	foreach file in files
 	{
 		outFile = path.combine(outDir, path.getFileName(file))
-		print(file + " => " + outFile)
+		print(path.getFileName(file) + " => " + path.getFileName(outFile))
 		fs.copy(file, outFile)
 	}
 }

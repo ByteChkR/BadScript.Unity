@@ -12,22 +12,22 @@ namespace BadScript.Unity.Utils.Expressions
     public class BadScriptValue < T >
     {
         [SerializeField]
-        [Tooltip("A single Line Expression does not require a return statement")]
+        [Tooltip( "A single Line Expression does not require a return statement" )]
         private bool m_IsMultiLineExpression = false;
         [SerializeField]
-        [TextArea(1, 5)]
-        [Tooltip("The Expression to Compute.")]
+        [TextArea( 1, 5 )]
+        [Tooltip( "The Expression to Compute." )]
         private string m_Expression = "0";
         [SerializeField]
-        [Tooltip("The Arguments that are required and are available when computing the expression.")]
+        [Tooltip( "The Arguments that are required and are available when computing the expression." )]
         private BadScriptExpressionArgument[] Arguments = new BadScriptExpressionArgument[0];
-
-        #region Public
 
         public static implicit operator T( BadScriptValue < T > v )
         {
             return v.Compute();
         }
+
+        #region Public
 
         public T Compute( params object[] arg )
         {

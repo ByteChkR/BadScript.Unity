@@ -1,14 +1,13 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 
 namespace BadScript.Unity.Utils
 {
-    public abstract class Singleton<TSingleton> : MonoBehaviour
-        where TSingleton : Singleton<TSingleton>
+
+    public abstract class Singleton < TSingleton > : MonoBehaviour
+        where TSingleton : Singleton < TSingleton >
     {
         private static TSingleton instance;
 
@@ -17,10 +16,10 @@ namespace BadScript.Unity.Utils
             get
             {
                 // ReSharper disable once ConvertIfStatementToNullCoalescingExpression
-                if (instance == null)
+                if ( instance == null )
                 {
-                    GameObject singletonContainer = new GameObject($"{typeof(TSingleton).Name} singleton");
-                    instance= singletonContainer.AddComponent<TSingleton>();
+                    GameObject singletonContainer = new GameObject( $"{typeof( TSingleton ).Name} singleton" );
+                    instance = singletonContainer.AddComponent < TSingleton >();
                 }
 
                 return instance;
@@ -32,15 +31,17 @@ namespace BadScript.Unity.Utils
 
         public static bool IsInitialized => instance != null;
 
+        #region Unity Event Functions
+
         protected virtual void Awake()
         {
-            if (!IsInitialized)
+            if ( !IsInitialized )
             {
                 Instance = this as TSingleton;
             }
             else
             {
-                DestroyThis(false);
+                DestroyThis( false );
 
                 throw new Exception( "Singleton Violation: " + typeof( TSingleton ).Name );
             }
@@ -48,44 +49,58 @@ namespace BadScript.Unity.Utils
 
         protected virtual void OnDestroy()
         {
-            if (instance == this)
+            if ( instance == this )
             {
                 instance = null;
             }
         }
 
-        public void DontDestroyOnLoad(bool dontDestroy)
-        {
-            if (dontDestroy)
-            {
-                Object.DontDestroyOnLoad(instance.gameObject);
-                return;
-            }
-            SceneManager.MoveGameObjectToScene(instance.gameObject, SceneManager.GetActiveScene());
-        }
+        #endregion
+
+        #region Public
 
         /// <summary>
-        /// Sets the instance of the singleton to null.
+        ///     Sets the instance of the singleton to null.
         /// </summary>
         public void DestroyInstance()
         {
-            DestroyThis(true);
+            DestroyThis( true );
         }
 
-        private void DestroyThis(bool destroyInstance)
+        public void DontDestroyOnLoad( bool dontDestroy )
         {
-            if (destroyInstance)
+            if ( dontDestroy )
+            {
+                Object.DontDestroyOnLoad( instance.gameObject );
+
+                return;
+            }
+
+            SceneManager.MoveGameObjectToScene( instance.gameObject, SceneManager.GetActiveScene() );
+        }
+
+        #endregion
+
+        #region Private
+
+        private void DestroyThis( bool destroyInstance )
+        {
+            if ( destroyInstance )
             {
                 instance = null;
             }
 
-            if (gameObject.name.ToLower().Contains("singleton"))
+            if ( gameObject.name.ToLower().Contains( "singleton" ) )
             {
-                Destroy(gameObject);
+                Destroy( gameObject );
+
                 return;
             }
 
-            Destroy(this);
+            Destroy( this );
         }
+
+        #endregion
     }
+
 }

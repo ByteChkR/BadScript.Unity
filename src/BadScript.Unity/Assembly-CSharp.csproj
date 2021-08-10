@@ -54,7 +54,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Testing\TestComponent.cs" />
-    <Compile Include="Assets\BadScript_Wrappers.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -725,9 +724,9 @@
       <Project>{DD243DD2-95EA-8BD9-D238-3DC506E1148F}</Project>
       <Name>BadScript.Unity</Name>
     </ProjectReference>
-    <ProjectReference Include="BadScript.Unity.Zip.csproj">
-      <Project>{7B252B9C-D453-A5BA-A525-2E12F9F5BED2}</Project>
-      <Name>BadScript.Unity.Zip</Name>
+    <ProjectReference Include="BadScript.Unity.Wrapper.csproj">
+      <Project>{7C43F49C-3626-BFE1-426E-02149D5B7E85}</Project>
+      <Name>BadScript.Unity.Wrapper</Name>
     </ProjectReference>
     <ProjectReference Include="BadScript.Unity.Core.csproj">
       <Project>{4FEE9BEA-94D9-654B-FE6C-78E134E7DB56}</Project>
@@ -736,6 +735,10 @@
     <ProjectReference Include="BadScript.Unity.Xml.csproj">
       <Project>{4C06B519-ACA2-DAC0-6A97-7F1FDA47B259}</Project>
       <Name>BadScript.Unity.Xml</Name>
+    </ProjectReference>
+    <ProjectReference Include="BadScript.Unity.Zip.csproj">
+      <Project>{7B252B9C-D453-A5BA-A525-2E12F9F5BED2}</Project>
+      <Name>BadScript.Unity.Zip</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

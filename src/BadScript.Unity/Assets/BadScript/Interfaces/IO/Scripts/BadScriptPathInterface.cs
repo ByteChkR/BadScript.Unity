@@ -6,14 +6,19 @@ using UnityEngine;
 namespace BadScript.Unity.IO
 {
 
-    [CreateAssetMenu(menuName = "BadScript/Interfaces/Path")]
+    [CreateAssetMenu( menuName = "BadScript/Interfaces/Path" )]
     public class BadScriptPathInterface : BadScriptInterfaceObject
     {
         public string AppRoot = "./";
+
+        #region Public
+
         public override ABSScriptInterface Get()
         {
-            return new BSFileSystemPathInterface(Path.GetFullPath(AppRoot));
+            return new BSFileSystemPathInterface( Path.GetFullPath( AppRoot ) );
         }
+
+        #endregion
     }
 
 }

@@ -1,0 +1,166 @@
+using BadScript.Common.Types;
+using BadScript.Common.Types.Implementations;
+using BadScript.Tools.CodeGenerator.Runtime;
+using BadScript.Utils.Reflection;
+using UnityEngine.UIElements;
+
+namespace BSWrapperObjects.Internal.UnityWrapper
+{
+
+    public class BSWrapperObject_UnityEngine_UIElements_PointerMoveEvent : BSWrapperObject < PointerMoveEvent >
+
+    {
+        #region Public
+
+        public BSWrapperObject_UnityEngine_UIElements_PointerMoveEvent( PointerMoveEvent obj ) : base( obj )
+        {
+            m_Properties["pointerId"] = new BSReflectionReference(
+                () => new BSObject( ( decimal ) m_InternalObject.pointerId ),
+                null );
+
+            m_Properties["pointerType"] = new BSReflectionReference(
+                () => new BSObject( m_InternalObject.pointerType ),
+                null );
+
+            m_Properties["isPrimary"] = new BSReflectionReference(
+                () => m_InternalObject.isPrimary ? BSObject.One : BSObject.Zero,
+                null );
+
+            m_Properties["button"] = new BSReflectionReference(
+                () => new BSObject( ( decimal ) m_InternalObject.button ),
+                null );
+
+            m_Properties["pressedButtons"] = new BSReflectionReference(
+                () => new BSObject( ( decimal ) m_InternalObject.pressedButtons ),
+                null );
+
+            m_Properties["position"] = new BSReflectionReference(
+                () => new BSWrapperObject_UnityEngine_Vector3( m_InternalObject.position ),
+                null );
+
+            m_Properties["localPosition"] = new BSReflectionReference(
+                () => new BSWrapperObject_UnityEngine_Vector3( m_InternalObject.localPosition ),
+                null );
+
+            m_Properties["deltaPosition"] = new BSReflectionReference(
+                () => new BSWrapperObject_UnityEngine_Vector3( m_InternalObject.deltaPosition ),
+                null );
+
+            m_Properties["deltaTime"] = new BSReflectionReference(
+                () => new BSObject( ( decimal ) m_InternalObject.deltaTime ),
+                null );
+
+            m_Properties["clickCount"] = new BSReflectionReference(
+                () => new BSObject( ( decimal ) m_InternalObject.clickCount ),
+                null );
+
+            m_Properties["pressure"] = new BSReflectionReference(
+                () => new BSObject( ( decimal ) m_InternalObject.pressure ),
+                null );
+
+            m_Properties["tangentialPressure"] = new BSReflectionReference(
+                () => new BSObject( ( decimal ) m_InternalObject.tangentialPressure ),
+                null );
+
+            m_Properties["altitudeAngle"] = new BSReflectionReference(
+                () => new BSObject( ( decimal ) m_InternalObject.altitudeAngle ),
+                null );
+
+            m_Properties["azimuthAngle"] = new BSReflectionReference(
+                () => new BSObject( ( decimal ) m_InternalObject.azimuthAngle ),
+                null );
+
+            m_Properties["twist"] = new BSReflectionReference(
+                () => new BSObject( ( decimal ) m_InternalObject.twist ),
+                null );
+
+            m_Properties["radius"] = new BSReflectionReference(
+                () => new BSWrapperObject_UnityEngine_Vector2( m_InternalObject.radius ),
+                null );
+
+            m_Properties["radiusVariance"] = new BSReflectionReference(
+                () => new BSWrapperObject_UnityEngine_Vector2( m_InternalObject.radiusVariance ),
+                null );
+
+            m_Properties["shiftKey"] = new BSReflectionReference(
+                () => m_InternalObject.shiftKey ? BSObject.One : BSObject.Zero,
+                null );
+
+            m_Properties["ctrlKey"] = new BSReflectionReference(
+                () => m_InternalObject.ctrlKey ? BSObject.One : BSObject.Zero,
+                null );
+
+            m_Properties["commandKey"] = new BSReflectionReference(
+                () => m_InternalObject.commandKey ? BSObject.One : BSObject.Zero,
+                null );
+
+            m_Properties["altKey"] = new BSReflectionReference(
+                () => m_InternalObject.altKey ? BSObject.One : BSObject.Zero,
+                null );
+
+            m_Properties["actionKey"] = new BSReflectionReference(
+                () => m_InternalObject.actionKey ? BSObject.One : BSObject.Zero,
+                null );
+
+            m_Properties["currentTarget"] = new BSReflectionReference(
+                () => new BSWrapperObject_UnityEngine_UIElements_IEventHandler( m_InternalObject.currentTarget ),
+                null );
+
+            m_Properties["eventTypeId"] = new BSReflectionReference(
+                () => new BSObject( ( decimal ) m_InternalObject.eventTypeId ),
+                null );
+
+            m_Properties["timestamp"] = new BSReflectionReference(
+                () => new BSObject( ( decimal ) m_InternalObject.timestamp ),
+                null );
+
+            m_Properties["bubbles"] = new BSReflectionReference(
+                () => m_InternalObject.bubbles ? BSObject.One : BSObject.Zero,
+                null );
+
+            m_Properties["tricklesDown"] = new BSReflectionReference(
+                () => m_InternalObject.tricklesDown ? BSObject.One : BSObject.Zero,
+                null );
+
+            m_Properties["target"] = new BSReflectionReference(
+                () => new BSWrapperObject_UnityEngine_UIElements_IEventHandler( m_InternalObject.target ),
+                x => m_InternalObject.target = WrapperHelper.UnwrapObject < IEventHandler >( x ) );
+
+            m_Properties["isPropagationStopped"] = new BSReflectionReference(
+                () => m_InternalObject.isPropagationStopped ? BSObject.One : BSObject.Zero,
+                null );
+
+            m_Properties["isImmediatePropagationStopped"] = new BSReflectionReference(
+                () => m_InternalObject.isImmediatePropagationStopped ? BSObject.One : BSObject.Zero,
+                null );
+
+            m_Properties["isDefaultPrevented"] = new BSReflectionReference(
+                () => m_InternalObject.isDefaultPrevented ? BSObject.One : BSObject.Zero,
+                null );
+
+            m_Properties["dispatch"] = new BSReflectionReference(
+                () => m_InternalObject.dispatch ? BSObject.One : BSObject.Zero,
+                null );
+
+            m_Properties["imguiEvent"] = new BSReflectionReference(
+                () => new BSWrapperObject_UnityEngine_Event( m_InternalObject.imguiEvent ),
+                null );
+
+            m_Properties["originalMousePosition"] = new BSReflectionReference(
+                () => new BSWrapperObject_UnityEngine_Vector2( m_InternalObject.originalMousePosition ),
+                null );
+
+            m_Properties["Equals"] = new BSFunctionReference(
+                new BSFunction(
+                    "function Equals(obj)",
+                    a => m_InternalObject.Equals( WrapperHelper.UnwrapObject < object >( a[0] ) )
+                        ? BSObject.One
+                        : BSObject.Zero,
+                    1 ) );
+
+        }
+
+        #endregion
+    }
+
+}

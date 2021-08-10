@@ -53,8 +53,8 @@
     <UnityVersion>2020.3.12f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\BadScript\Interfaces\Json\Scripts\Json2BadScriptInterface.cs" />
     <Compile Include="Assets\BadScript\Interfaces\Json\Scripts\BadScript2JsonInterface.cs" />
+    <Compile Include="Assets\BadScript\Interfaces\Json\Scripts\Json2BadScriptInterface.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\BadScript\Interfaces\Json\BadScript.Unity.Json.asmdef" />

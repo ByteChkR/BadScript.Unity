@@ -9,48 +9,58 @@ namespace BadScript.Unity
 {
 
     [Serializable]
-    [CreateAssetMenu(menuName = "BadScript/Settings")]
+    [CreateAssetMenu( menuName = "BadScript/Settings" )]
     public class BadScriptSettingsObject : ScriptableObject
     {
-        [Note("Settings Object that holds all the configurations needed for the BadScriptRuntimeComponent")]
-
-
+        [Note( "Settings Object that holds all the configurations needed for the BadScriptRuntimeComponent" )]
         [Header( "Parser Settings" )]
-        [Tooltip("Optimize Constant Expressions like '1+45'")]
+        [Tooltip( "Optimize Constant Expressions like '1+45'" )]
         public bool AllowOptimizations = true;
 
         [Header( "Runtime Settings" )]
-        [Tooltip("Adds the 'environment' interface that allows for dynamically loading more interfaces")]
+        [Tooltip( "Adds the 'environment' interface that allows for dynamically loading more interfaces" )]
         public bool AddEnvironmentApi = true;
-        [Tooltip("All Available Interfaces")]
-        public List <BadScriptInterfaceObject> AvailableInterfaces;
-        [Tooltip("The Interfaces that are loaded when the engine starts. Prefix with '#' to load interface in global scope")]
+        [Tooltip( "All Available Interfaces" )]
+        public List < BadScriptInterfaceObject > AvailableInterfaces;
+        [Tooltip(
+            "The Interfaces that are loaded when the engine starts. Prefix with '#' to load interface in global scope" )]
         public List < string > DefaultInterfaces;
 
-        private BSParserSettings GetParserSettings() => new BSParserSettings { AllowOptimization = AllowOptimizations };
+        #region Public
 
         public BSEngine Build()
         {
             BSEngineSettings e = GetSettings();
             BSEngine engine = e.Build();
-            if (AddEnvironmentApi)
+
+            if ( AddEnvironmentApi )
             {
                 engine.AddInterface( new BSEngineEnvironmentInterface( engine ) );
-                engine.LoadInterface("environment");
+                engine.LoadInterface( "environment" );
             }
 
             return engine;
         }
 
+        #endregion
+
+        #region Private
+
+        private BSParserSettings GetParserSettings()
+        {
+            return new BSParserSettings { AllowOptimization = AllowOptimizations };
+        }
+
         private BSEngineSettings GetSettings()
         {
             BSEngineSettings e = new BSEngineSettings( GetParserSettings() );
-            e.ActiveInterfaces.AddRange(DefaultInterfaces);
-            e.Interfaces.AddRange(AvailableInterfaces.Select(x => x.Get()));
+            e.ActiveInterfaces.AddRange( DefaultInterfaces );
+            e.Interfaces.AddRange( AvailableInterfaces.Select( x => x.Get() ) );
 
             return e;
         }
 
+        #endregion
     }
 
 }

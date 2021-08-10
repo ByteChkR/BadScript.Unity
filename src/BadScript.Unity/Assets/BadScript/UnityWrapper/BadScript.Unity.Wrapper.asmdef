@@ -1,0 +1,17 @@
+{
+    "name": "BadScript.Unity.Wrapper",
+    "rootNamespace": "BadScript.Unity.Wrapper",
+    "references": [
+        "GUID:9292d5ef4ba08e14ab78278761974713",
+        "GUID:90f7ea3091a9cac46887465226e8a0b0"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
