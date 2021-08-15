@@ -1001,13 +1001,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ConsoleUI: {fileID: 1438217893376854402}
   m_OutputScrollRect: {fileID: 1438217893758364394}
-  m_ToggleKey: 288
-  m_ToggleFullScreen: 1
   m_ConsoleOutput: {fileID: 1438217892718364082}
   m_ClearOnInput: 1
   m_ConsoleInput: {fileID: 1438217894014933327}
-  m_InputFunctionName: onInput
+  m_ToggleKey: 288
+  m_ViewStates:
+  - Show: 0
+    MinAnchor: {x: 0, y: 0}
+    MaxAnchor: {x: 0, y: 0}
+  - Show: 1
+    MinAnchor: {x: 0, y: 0}
+    MaxAnchor: {x: 1, y: 1}
+  - Show: 1
+    MinAnchor: {x: 0, y: 0.5}
+    MaxAnchor: {x: 1, y: 1}
+  - Show: 1
+    MinAnchor: {x: 0, y: 0}
+    MaxAnchor: {x: 1, y: 0.5}
+  - Show: 1
+    MinAnchor: {x: 0, y: 0}
+    MaxAnchor: {x: 0.5, y: 1}
+  - Show: 1
+    MinAnchor: {x: 0.5, y: 0}
+    MaxAnchor: {x: 1, y: 1}
   m_ConsoleSource: {fileID: 11400000, guid: 6b75a2b558ad1f24cacc1dccf6a8008d, type: 2}
+  m_InputFunctionName: onInput
   m_ConsolePlugins:
   - {fileID: 11400000, guid: 2bf9d2c0c1d78c54eade99b621446d8f, type: 2}
 --- !u!1 &1438217893088960098

@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using BadScript.Common.Types;
 using BadScript.Common.Types.Implementations;
@@ -11,28 +9,37 @@ using UnityEngine.UI;
 
 public class BadScriptConsoleComponent : MonoBehaviour
 {
+    private bool IsShown => m_ConsoleUI.gameObject.activeSelf;
+    [Header("UI References")]
     [SerializeField]
     private RectTransform m_ConsoleUI;
+    [Header("Output")]
     [SerializeField]
     private ScrollRect m_OutputScrollRect;
     [SerializeField]
-    private KeyCode m_ToggleKey;
-    [SerializeField]
-    private bool m_ToggleFullScreen;
-    private int m_ToggleState = 0;
-    [SerializeField]
     private Text m_ConsoleOutput;
+    [Header("Input")]
     [SerializeField]
     private bool m_ClearOnInput = true;
     [SerializeField]
     private InputField m_ConsoleInput;
+    [Header("Activation Controls")]
     [SerializeField]
-    private string m_InputFunctionName = "onInput";
+    private KeyCode m_ToggleKey;
+    [SerializeField]
+    private BadScriptConsoleViewState[] m_ViewStates;
+    private int m_ViewState = 0;
+
+    [Header("Console Source")]
     [SerializeField]
     private BadScriptSource m_ConsoleSource;
+    [Tooltip("The Function that gets invoked when a command gets entered")]
     [SerializeField]
-    private BadScriptSource[] m_ConsolePlugins;
+    private string m_InputFunctionName = "onInput";
     private ABSObject m_InputFunction;
+    [SerializeField]
+    [Tooltip("Plugins that get loaded in the context of the console. This can be used to load helper scripts before the console starts.")]
+    private BadScriptSource[] m_ConsolePlugins;
 
     private void Start()
     {
@@ -46,10 +53,6 @@ public class BadScriptConsoleComponent : MonoBehaviour
         string[] src = m_ConsolePlugins.Select( x => x.GetSource() ).ToArray();
         ABSObject table=BadScriptRuntimeComponent.Instance.Run( m_ConsoleSource.GetSource(), src);
         m_InputFunction = table.GetProperty( m_InputFunctionName );
-        
-
-
-
     }
 
     private IEnumerator ScrollBottomHelper()
@@ -62,48 +65,43 @@ public class BadScriptConsoleComponent : MonoBehaviour
     private void ConsoleInstance_OnWriteLine(ABSObject obj)
     {
         m_ConsoleOutput.text += obj.ConvertString() + "\n";
+        if(IsShown)
         StartCoroutine( ScrollBottomHelper() );
     }
 
     private void ConsoleInstance_OnWrite(ABSObject obj)
     {
         m_ConsoleOutput.text += obj.ConvertString();
-        StartCoroutine(ScrollBottomHelper());
+        if (IsShown)
+            StartCoroutine(ScrollBottomHelper());
     }
 
     private void ConsoleInstance_OnClear()
     {
         m_ConsoleOutput.text = "";
     }
-
-    private void Resize(float minuvx, float minuvy, float maxuvx, float maxuvy)
-    {
-        m_ConsoleUI.anchorMin = new Vector2(minuvx, minuvy);
-        m_ConsoleUI.anchorMax = new Vector2(maxuvx, maxuvy);
-    }
-
+    
     private void Update()
     {
         if ( Input.GetKeyDown(m_ToggleKey) )
         {
-            if ( m_ToggleState == 0 )
+            m_ViewState++;
+
+            if ( m_ViewState == m_ViewStates.Length )
+                m_ViewState = 0;
+
+            BadScriptConsoleViewState state = m_ViewStates[m_ViewState];
+
+            if ( state.Show )
             {
-                //Resize to Half Screen
-                Resize(0.0f, 0.5f, 1.0f, 1 );
                 Show();
-                m_ToggleState++;
-            }
-            else if(m_ToggleState==1 && m_ToggleFullScreen)
-            {
-                //Resize to Full Screen
-                Resize(0.0f, 0.0f, 1.0f, 1.0f);
-                m_ToggleState++;
+                state.Apply( m_ConsoleUI );
             }
             else
             {
                 Hide();
-                m_ToggleState=0;
             }
+
         }
     }
 
