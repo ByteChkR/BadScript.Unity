@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadScript.Unity.Wrapper", "BadScript.Unity.Wrapper.csproj", "{7C43F49C-3626-BFE1-426E-02149D5B7E85}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadScript.Unity", "BadScript.Unity.csproj", "{DD243DD2-95EA-8BD9-D238-3DC506E1148F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BadScript.Unity.Core", "BadScript.Unity.Core.csproj", "{4FEE9BEA-94D9-654B-FE6C-78E134E7DB56}"
@@ -35,10 +33,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7C43F49C-3626-BFE1-426E-02149D5B7E85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7C43F49C-3626-BFE1-426E-02149D5B7E85}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7C43F49C-3626-BFE1-426E-02149D5B7E85}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7C43F49C-3626-BFE1-426E-02149D5B7E85}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DD243DD2-95EA-8BD9-D238-3DC506E1148F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DD243DD2-95EA-8BD9-D238-3DC506E1148F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD243DD2-95EA-8BD9-D238-3DC506E1148F}.Release|Any CPU.ActiveCfg = Release|Any CPU

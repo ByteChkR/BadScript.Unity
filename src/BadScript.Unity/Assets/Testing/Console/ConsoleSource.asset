@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa606bc7cd41b4c48a21b5f876479f5c, type: 3}
+  m_Name: ConsoleSource
+  m_EditorClassIdentifier: 
+  m_IsBenchmark: 0
+  m_Arguments: []
+  m_Source: "function log(str)\r\n{\r\n\tprint(\"[LOG] \" + str)\r\n}\r\nfunction
+    warn(str)\r\n{\r\n\tprint(\"[WARN] \" + str)\r\n}\r\n\r\nstring = environment.loadInterface(\"string\",
+    {})\r\n\r\nconsoleSettings = {\n\tReturnExpressionValues = 0,\n\tWriteInput =
+    0\n}\n\ninteractiveScope = null\r\ninteractiveScript = null\r\n\r\nfunction load()\r\n{\r\n\tlog(\"Creating
+    Sandbox Scope.. \")\r\n\tinteractiveScope = environment.createScope()\r\n\n\tenvironment.loadScopedString(interactiveScope,
+    \"ConsoleSettings = args[0]\", consoleSettings)\r\n\n\tinteractiveScript = \"\"\r\n}\r\n\r\nfunction
+    onInput(line)\r\n{\r\n\tif(consoleSettings.WriteInput)\n\t{\n\t\tprint(\"[\n\t}\n\tif(string.toUpper(line)
+    == \"\\\\RESET\" ||\r\n\t\t\tstring.toUpper(line) == \"\\\\CLEAR\")\r\n\t{\r\n\t\tlog(\"Clearing
+    Script Content..\")\r\n\t\tinteractiveScript = \"\"\r\n\t}\r\n\telse if(string.toUpper(line)
+    == \"\\\\RESTART\" ||\r\n\t\t\tstring.toUpper(line) == \"\\\\RELOAD\")\r\n\t{\r\n\t\tload()\r\n\t}\r\n\telse
+    if(string.endsWith(line, \"/\"))\r\n\t{\r\n\t\tln = string.substr(line, 0, string.length(line)
+    - 1)\r\n\t\tinteractiveScript = interactiveScript + \"\\n\" + ln\r\n\t}\r\n\telse\r\n\t{\r\n\t\tinteractiveScript
+    = interactiveScript + \"\\n\" + line\r\n\t\ttry\r\n\t\t{\r\n\t\t\tr = environment.loadScopedString(interactiveScope,
+    interactiveScript)\r\n\t\t\tif(consoleSettings.ReturnExpressionValues)\n\t\t\t{\n\t\t\t\tlog(\"Return:
+    \" + debug(r))\n\t\t\t}\n\t\t}\r\n\t\tcatch (e)\r\n\t\t{\r\n\t\t\twarn(string.format(\"ERROR:
+    '{0}' with message: '{1}'\\nStacktrace:\\n{2}\", e.type, e.message, e.trace))\r\n\t\t}\r\n\t\tinteractiveScript
+    = \"\"\r\n\t}\r\n}\r\nfunction loadPlugins()\r\n{\r\n\tlog(\"Loading \" + args.size()
+    + \" Plugins..\")\r\n\tforeach arg in args\r\n\t{\r\n\t\tonInput(arg)\r\n\t}\r\n}\r\n\r\nlog(\"Starting
+    BadScript Unity Console..\")\r\n\r\nload()\r\n\r\nloadPlugins()"

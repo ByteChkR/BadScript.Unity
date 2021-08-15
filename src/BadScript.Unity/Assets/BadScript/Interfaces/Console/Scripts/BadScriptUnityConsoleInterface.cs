@@ -12,6 +12,8 @@ namespace BadScript.Unity.Console
     [CreateAssetMenu( menuName = "BadScript/Interfaces/Console" )]
     public class BadScriptUnityConsoleInterface : BadScriptInterfaceObject
     {
+        public static BadScriptUnityConsoleInterface ConsoleInstance { get; private set; }
+
         [Header( "Console Input" )]
         [SerializeField]
         private UnityConsoleInput m_ConsoleInput;
@@ -38,6 +40,8 @@ namespace BadScript.Unity.Console
         #endregion
 
         #region Private
+
+        public BadScriptUnityConsoleInterface() => ConsoleInstance = this;
 
         private void Clear()
         {
@@ -82,6 +86,8 @@ namespace BadScript.Unity.Console
                 Debug.Log( obj );
             }
         }
+
+        public void SetConsoleInput( UnityConsoleInput cin ) => m_ConsoleInput = cin;
 
         #endregion
     }

@@ -7,9 +7,9 @@
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "BadScript.Zip/2021.8.5.0": {
+      "BadScript.Zip/2021.8.14.2": {
         "dependencies": {
-          "BadScript": "2021.8.5.2",
+          "BadScript": "2021.8.14.2",
           "NETStandard.Library": "2.0.3",
           "System.IO.Compression.ZipFile": "4.3.0"
         },
@@ -238,7 +238,7 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "BadScript/2021.8.5.2": {
+      "BadScript/2021.8.14.2": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.1"
         },
@@ -249,7 +249,7 @@
     }
   },
   "libraries": {
-    "BadScript.Zip/2021.8.5.0": {
+    "BadScript.Zip/2021.8.14.2": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -436,7 +436,7 @@
       "path": "system.threading.tasks/4.3.0",
       "hashPath": "system.threading.tasks.4.3.0.nupkg.sha512"
     },
-    "BadScript/2021.8.5.2": {
+    "BadScript/2021.8.14.2": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
