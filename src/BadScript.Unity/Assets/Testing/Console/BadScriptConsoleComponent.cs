@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Linq;
+using System.Reflection;
 using BadScript.Common.Types;
 using BadScript.Common.Types.Implementations;
 using BadScript.Unity;
@@ -18,6 +19,8 @@ public class BadScriptConsoleComponent : MonoBehaviour
     private ScrollRect m_OutputScrollRect;
     [SerializeField]
     private Text m_ConsoleOutput;
+    [SerializeField]
+    private int m_MaxConsoleCharacters = 100000;
     [Header("Input")]
     [SerializeField]
     private bool m_ClearOnInput = true;
@@ -58,20 +61,31 @@ public class BadScriptConsoleComponent : MonoBehaviour
     private IEnumerator ScrollBottomHelper()
     {
         yield return new WaitForEndOfFrame();
-
+        
         m_OutputScrollRect.normalizedPosition = new Vector2(0, 0);
+    }
+
+    private void EnsureSize()
+    {
+        if ( m_ConsoleOutput.text.Length > m_MaxConsoleCharacters )
+        {
+            int sz = m_ConsoleOutput.text.Length- m_MaxConsoleCharacters;
+            m_ConsoleOutput.text = m_ConsoleOutput.text.Substring(sz, m_MaxConsoleCharacters);
+        }
     }
 
     private void ConsoleInstance_OnWriteLine(ABSObject obj)
     {
         m_ConsoleOutput.text += obj.ConvertString() + "\n";
-        if(IsShown)
+        EnsureSize();
+        if (IsShown)
         StartCoroutine( ScrollBottomHelper() );
     }
 
     private void ConsoleInstance_OnWrite(ABSObject obj)
     {
         m_ConsoleOutput.text += obj.ConvertString();
+        EnsureSize();
         if (IsShown)
             StartCoroutine(ScrollBottomHelper());
     }
@@ -79,6 +93,8 @@ public class BadScriptConsoleComponent : MonoBehaviour
     private void ConsoleInstance_OnClear()
     {
         m_ConsoleOutput.text = "";
+        if (IsShown)
+            StartCoroutine(ScrollBottomHelper());
     }
     
     private void Update()
