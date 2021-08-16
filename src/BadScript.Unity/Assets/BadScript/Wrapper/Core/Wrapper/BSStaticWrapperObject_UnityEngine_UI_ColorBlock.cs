@@ -1,5 +1,6 @@
 using BadScript.Tools.CodeGenerator.Runtime;
 using BadScript.Utils.Reflection;
+using UnityEngine.UI;
 
 namespace BadScript.Unity.Wrapper.Core.Generated
 {
@@ -7,11 +8,17 @@ namespace BadScript.Unity.Wrapper.Core.Generated
     public class BSStaticWrapperObject_UnityEngine_UI_ColorBlock : BSStaticWrapperObject
 
     {
-        public BSStaticWrapperObject_UnityEngine_UI_ColorBlock() : base(typeof(UnityEngine.UI.ColorBlock))
+        #region Public
+
+        public BSStaticWrapperObject_UnityEngine_UI_ColorBlock() : base( typeof( ColorBlock ) )
         {
-            m_StaticProperties["defaultColorBlock"] = new BSReflectionReference(() => new BSWrapperObject_UnityEngine_UI_ColorBlock(UnityEngine.UI.ColorBlock.defaultColorBlock), x=> UnityEngine.UI.ColorBlock.defaultColorBlock = WrapperHelper.UnwrapObject<UnityEngine.UI.ColorBlock>(x));
+            m_StaticProperties["defaultColorBlock"] = new BSReflectionReference(
+                () => new BSWrapperObject_UnityEngine_UI_ColorBlock( ColorBlock.defaultColorBlock ),
+                x => ColorBlock.defaultColorBlock = WrapperHelper.UnwrapObject < ColorBlock >( x ) );
 
         }
+
+        #endregion
     }
 
 }

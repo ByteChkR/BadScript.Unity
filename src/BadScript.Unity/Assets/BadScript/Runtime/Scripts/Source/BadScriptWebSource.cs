@@ -1,5 +1,4 @@
 using System.Net;
-using BadScript.Common.Types;
 using UnityEngine;
 
 namespace BadScript.Unity
@@ -16,9 +15,9 @@ namespace BadScript.Unity
 
         public override string GetSource()
         {
-            using (WebClient wc = new WebClient())
+            using ( WebClient wc = new WebClient() )
             {
-                return wc.DownloadString(m_SourceUrl);
+                return wc.DownloadString( m_SourceUrl );
             }
         }
 

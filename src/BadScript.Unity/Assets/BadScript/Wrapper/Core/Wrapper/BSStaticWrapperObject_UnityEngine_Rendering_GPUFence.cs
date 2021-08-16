@@ -1,4 +1,5 @@
 using BadScript.Tools.CodeGenerator.Runtime;
+using UnityEngine.Rendering;
 
 namespace BadScript.Unity.Wrapper.Core.Generated
 {
@@ -6,10 +7,14 @@ namespace BadScript.Unity.Wrapper.Core.Generated
     public class BSStaticWrapperObject_UnityEngine_Rendering_GPUFence : BSStaticWrapperObject
 
     {
-        public BSStaticWrapperObject_UnityEngine_Rendering_GPUFence() : base(typeof(UnityEngine.Rendering.GraphicsFence))
+        #region Public
+
+        public BSStaticWrapperObject_UnityEngine_Rendering_GPUFence() : base( typeof( GraphicsFence ) )
         {
 
         }
+
+        #endregion
     }
 
 }

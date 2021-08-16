@@ -1,9 +1,5 @@
-using System.Text;
-using BadScript.Tools.CodeGenerator.Runtime;
-using BadScript.Unity;
 using BadScript.Unity.Utils.Expressions;
 using UnityEngine;
-using UnityEngine.Playables;
 
 public class TestComponent : MonoBehaviour
 {
@@ -11,7 +7,6 @@ public class TestComponent : MonoBehaviour
     private BadScriptValue < decimal > MyValue;
     [SerializeField]
     private BadScriptValue < decimal > MyConstValue;
-
 
     #region Unity Event Functions
 

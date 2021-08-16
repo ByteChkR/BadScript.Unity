@@ -1,5 +1,4 @@
 using System.IO;
-using BadScript.Common.Types;
 using UnityEngine;
 
 namespace BadScript.Unity
@@ -16,7 +15,7 @@ namespace BadScript.Unity
 
         public override string GetSource()
         {
-            return File.ReadAllText(m_SourcePath);
+            return File.ReadAllText( m_SourcePath );
         }
 
         #endregion

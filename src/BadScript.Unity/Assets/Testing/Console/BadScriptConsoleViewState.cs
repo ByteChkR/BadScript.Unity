@@ -8,9 +8,13 @@ public class BadScriptConsoleViewState
     public Vector2 MinAnchor;
     public Vector2 MaxAnchor;
 
-    public void Apply(RectTransform t)
+    #region Public
+
+    public void Apply( RectTransform t )
     {
         t.anchorMin = MinAnchor;
         t.anchorMax = MaxAnchor;
     }
+
+    #endregion
 }

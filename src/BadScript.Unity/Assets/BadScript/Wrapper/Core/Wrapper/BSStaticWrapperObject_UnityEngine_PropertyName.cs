@@ -1,6 +1,7 @@
 using BadScript.Common.Types;
 using BadScript.Common.Types.Implementations;
 using BadScript.Tools.CodeGenerator.Runtime;
+using UnityEngine;
 
 namespace BadScript.Unity.Wrapper.Core.Generated
 {
@@ -8,11 +9,21 @@ namespace BadScript.Unity.Wrapper.Core.Generated
     public class BSStaticWrapperObject_UnityEngine_PropertyName : BSStaticWrapperObject
 
     {
-        public BSStaticWrapperObject_UnityEngine_PropertyName() : base(typeof(UnityEngine.PropertyName))
+        #region Public
+
+        public BSStaticWrapperObject_UnityEngine_PropertyName() : base( typeof( PropertyName ) )
         {
-            m_StaticProperties["IsNullOrEmpty"] = new BSFunctionReference(new BSFunction("function IsNullOrEmpty(prop)", a => UnityEngine.PropertyName.IsNullOrEmpty(WrapperHelper.UnwrapObject<UnityEngine.PropertyName>(a[0])) ? BSObject.One : BSObject.Zero, 1));
+            m_StaticProperties["IsNullOrEmpty"] = new BSFunctionReference(
+                new BSFunction(
+                    "function IsNullOrEmpty(prop)",
+                    a => PropertyName.IsNullOrEmpty( WrapperHelper.UnwrapObject < PropertyName >( a[0] ) )
+                        ? BSObject.One
+                        : BSObject.Zero,
+                    1 ) );
 
         }
+
+        #endregion
     }
 
 }

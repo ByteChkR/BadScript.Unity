@@ -1,4 +1,5 @@
 using BadScript.Tools.CodeGenerator.Runtime;
+using UnityEngine.UIElements;
 
 namespace BadScript.Unity.Wrapper.Core.Generated
 {
@@ -6,10 +7,14 @@ namespace BadScript.Unity.Wrapper.Core.Generated
     public class BSStaticWrapperObject_UnityEngine_UIElements_ITransform : BSStaticWrapperObject
 
     {
-        public BSStaticWrapperObject_UnityEngine_UIElements_ITransform() : base(typeof(UnityEngine.UIElements.ITransform))
+        #region Public
+
+        public BSStaticWrapperObject_UnityEngine_UIElements_ITransform() : base( typeof( ITransform ) )
         {
 
         }
+
+        #endregion
     }
 
 }

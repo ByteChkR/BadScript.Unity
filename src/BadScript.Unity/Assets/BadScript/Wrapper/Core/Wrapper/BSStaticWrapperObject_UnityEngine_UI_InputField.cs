@@ -1,4 +1,5 @@
 using BadScript.Tools.CodeGenerator.Runtime;
+using UnityEngine.UI;
 
 namespace BadScript.Unity.Wrapper.Core.Generated
 {
@@ -6,10 +7,14 @@ namespace BadScript.Unity.Wrapper.Core.Generated
     public class BSStaticWrapperObject_UnityEngine_UI_InputField : BSStaticWrapperObject
 
     {
-        public BSStaticWrapperObject_UnityEngine_UI_InputField() : base(typeof(UnityEngine.UI.InputField))
+        #region Public
+
+        public BSStaticWrapperObject_UnityEngine_UI_InputField() : base( typeof( InputField ) )
         {
 
         }
+
+        #endregion
     }
 
 }

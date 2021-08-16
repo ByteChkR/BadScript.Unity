@@ -1,15 +1,23 @@
 using BadScript.Tools.CodeGenerator.Runtime;
+using UnityEngine.UIElements.Experimental;
 
 namespace BadScript.Unity.Wrapper.Core.Generated
 {
 
-    public class BSWrapperObject_UnityEngine_UIElements_Experimental_ITransitionAnimations : BSWrapperObject<UnityEngine.UIElements.Experimental.ITransitionAnimations>
+    public class
+        BSWrapperObject_UnityEngine_UIElements_Experimental_ITransitionAnimations : BSWrapperObject <
+            ITransitionAnimations >
 
     {
-        public BSWrapperObject_UnityEngine_UIElements_Experimental_ITransitionAnimations(UnityEngine.UIElements.Experimental.ITransitionAnimations obj) : base(obj)
+        #region Public
+
+        public BSWrapperObject_UnityEngine_UIElements_Experimental_ITransitionAnimations( ITransitionAnimations obj ) :
+            base( obj )
         {
 
         }
+
+        #endregion
     }
 
 }

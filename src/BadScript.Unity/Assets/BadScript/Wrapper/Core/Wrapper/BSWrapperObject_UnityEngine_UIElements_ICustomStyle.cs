@@ -1,15 +1,20 @@
 using BadScript.Tools.CodeGenerator.Runtime;
+using UnityEngine.UIElements;
 
 namespace BadScript.Unity.Wrapper.Core.Generated
 {
 
-    public class BSWrapperObject_UnityEngine_UIElements_ICustomStyle : BSWrapperObject<UnityEngine.UIElements.ICustomStyle>
+    public class BSWrapperObject_UnityEngine_UIElements_ICustomStyle : BSWrapperObject < ICustomStyle >
 
     {
-        public BSWrapperObject_UnityEngine_UIElements_ICustomStyle(UnityEngine.UIElements.ICustomStyle obj) : base(obj)
+        #region Public
+
+        public BSWrapperObject_UnityEngine_UIElements_ICustomStyle( ICustomStyle obj ) : base( obj )
         {
 
         }
+
+        #endregion
     }
 
 }

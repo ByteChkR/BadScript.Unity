@@ -12,8 +12,6 @@ namespace BadScript.Unity.Console
     [CreateAssetMenu( menuName = "BadScript/Interfaces/Console" )]
     public class BadScriptUnityConsoleInterface : BadScriptInterfaceObject
     {
-        public static BadScriptUnityConsoleInterface ConsoleInstance { get; private set; }
-
         [Header( "Console Input" )]
         [SerializeField]
         private UnityConsoleInput m_ConsoleInput;
@@ -21,6 +19,8 @@ namespace BadScript.Unity.Console
         [Note( "Unity Console has the same implementations for Write and WriteLine", MessageType.Warning )]
         [Header( "Console Output" )]
         public bool UseUnityConsole = true;
+
+        public static BadScriptUnityConsoleInterface ConsoleInstance { get; private set; }
 
         public event Action OnClear;
 
@@ -30,6 +30,11 @@ namespace BadScript.Unity.Console
 
         #region Public
 
+        public BadScriptUnityConsoleInterface()
+        {
+            ConsoleInstance = this;
+        }
+
         public override ABSScriptInterface Get()
         {
             ConsoleApi api = new ConsoleApi( Write, WriteLine, Clear, Read );
@@ -37,11 +42,14 @@ namespace BadScript.Unity.Console
             return api;
         }
 
+        public void SetConsoleInput( UnityConsoleInput cin )
+        {
+            m_ConsoleInput = cin;
+        }
+
         #endregion
 
         #region Private
-
-        public BadScriptUnityConsoleInterface() => ConsoleInstance = this;
 
         private void Clear()
         {
@@ -86,8 +94,6 @@ namespace BadScript.Unity.Console
                 Debug.Log( obj );
             }
         }
-
-        public void SetConsoleInput( UnityConsoleInput cin ) => m_ConsoleInput = cin;
 
         #endregion
     }

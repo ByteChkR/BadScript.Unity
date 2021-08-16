@@ -1,4 +1,5 @@
 using BadScript.Tools.CodeGenerator.Runtime;
+using Microsoft.Win32.SafeHandles;
 
 namespace BadScript.Unity.Wrapper.Core.Generated
 {
@@ -6,10 +7,14 @@ namespace BadScript.Unity.Wrapper.Core.Generated
     public class BSStaticWrapperObject_Microsoft_Win32_SafeHandles_SafeWaitHandle : BSStaticWrapperObject
 
     {
-        public BSStaticWrapperObject_Microsoft_Win32_SafeHandles_SafeWaitHandle() : base(typeof(Microsoft.Win32.SafeHandles.SafeWaitHandle))
+        #region Public
+
+        public BSStaticWrapperObject_Microsoft_Win32_SafeHandles_SafeWaitHandle() : base( typeof( SafeWaitHandle ) )
         {
 
         }
+
+        #endregion
     }
 
 }

@@ -1,5 +1,6 @@
 using BadScript.Tools.CodeGenerator.Runtime;
 using BadScript.Utils.Reflection;
+using UnityEngine.Playables;
 
 namespace BadScript.Unity.Wrapper.Core.Generated
 {
@@ -7,11 +8,18 @@ namespace BadScript.Unity.Wrapper.Core.Generated
     public class BSStaticWrapperObject_UnityEngine_Playables_PlayableOutputHandle : BSStaticWrapperObject
 
     {
-        public BSStaticWrapperObject_UnityEngine_Playables_PlayableOutputHandle() : base(typeof(UnityEngine.Playables.PlayableOutputHandle))
+        #region Public
+
+        public BSStaticWrapperObject_UnityEngine_Playables_PlayableOutputHandle() : base(
+            typeof( PlayableOutputHandle ) )
         {
-            m_StaticProperties["Null"] = new BSReflectionReference(() => new BSWrapperObject_UnityEngine_Playables_PlayableOutputHandle(UnityEngine.Playables.PlayableOutputHandle.Null), null);
+            m_StaticProperties["Null"] = new BSReflectionReference(
+                () => new BSWrapperObject_UnityEngine_Playables_PlayableOutputHandle( PlayableOutputHandle.Null ),
+                null );
 
         }
+
+        #endregion
     }
 
 }

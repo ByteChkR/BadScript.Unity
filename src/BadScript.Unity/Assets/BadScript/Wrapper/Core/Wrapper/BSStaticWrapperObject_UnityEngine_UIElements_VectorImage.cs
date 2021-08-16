@@ -1,4 +1,5 @@
 using BadScript.Tools.CodeGenerator.Runtime;
+using UnityEngine.UIElements;
 
 namespace BadScript.Unity.Wrapper.Core.Generated
 {
@@ -6,10 +7,14 @@ namespace BadScript.Unity.Wrapper.Core.Generated
     public class BSStaticWrapperObject_UnityEngine_UIElements_VectorImage : BSStaticWrapperObject
 
     {
-        public BSStaticWrapperObject_UnityEngine_UIElements_VectorImage() : base(typeof(UnityEngine.UIElements.VectorImage))
+        #region Public
+
+        public BSStaticWrapperObject_UnityEngine_UIElements_VectorImage() : base( typeof( VectorImage ) )
         {
 
         }
+
+        #endregion
     }
 
 }

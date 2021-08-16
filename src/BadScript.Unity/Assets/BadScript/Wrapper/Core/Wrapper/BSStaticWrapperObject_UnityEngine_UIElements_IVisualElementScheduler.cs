@@ -1,4 +1,5 @@
 using BadScript.Tools.CodeGenerator.Runtime;
+using UnityEngine.UIElements;
 
 namespace BadScript.Unity.Wrapper.Core.Generated
 {
@@ -6,10 +7,15 @@ namespace BadScript.Unity.Wrapper.Core.Generated
     public class BSStaticWrapperObject_UnityEngine_UIElements_IVisualElementScheduler : BSStaticWrapperObject
 
     {
-        public BSStaticWrapperObject_UnityEngine_UIElements_IVisualElementScheduler() : base(typeof(UnityEngine.UIElements.IVisualElementScheduler))
+        #region Public
+
+        public BSStaticWrapperObject_UnityEngine_UIElements_IVisualElementScheduler() : base(
+            typeof( IVisualElementScheduler ) )
         {
 
         }
+
+        #endregion
     }
 
 }

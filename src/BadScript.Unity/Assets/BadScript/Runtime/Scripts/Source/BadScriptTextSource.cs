@@ -1,4 +1,3 @@
-using BadScript.Common.Types;
 using UnityEngine;
 
 namespace BadScript.Unity

@@ -1,4 +1,5 @@
 using BadScript.Tools.CodeGenerator.Runtime;
+using UnityEngine.UIElements;
 
 namespace BadScript.Unity.Wrapper.Core.Generated
 {
@@ -6,10 +7,15 @@ namespace BadScript.Unity.Wrapper.Core.Generated
     public class BSStaticWrapperObject_UnityEngine_UIElements_IExperimentalFeatures : BSStaticWrapperObject
 
     {
-        public BSStaticWrapperObject_UnityEngine_UIElements_IExperimentalFeatures() : base(typeof(UnityEngine.UIElements.IExperimentalFeatures))
+        #region Public
+
+        public BSStaticWrapperObject_UnityEngine_UIElements_IExperimentalFeatures() : base(
+            typeof( IExperimentalFeatures ) )
         {
 
         }
+
+        #endregion
     }
 
 }

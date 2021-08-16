@@ -1,4 +1,5 @@
 using BadScript.Tools.CodeGenerator.Runtime;
+using UnityEngine;
 
 namespace BadScript.Unity.Wrapper.Core.Generated
 {
@@ -6,10 +7,14 @@ namespace BadScript.Unity.Wrapper.Core.Generated
     public class BSStaticWrapperObject_UnityEngine_ArticulationReducedSpace : BSStaticWrapperObject
 
     {
-        public BSStaticWrapperObject_UnityEngine_ArticulationReducedSpace() : base(typeof(UnityEngine.ArticulationReducedSpace))
+        #region Public
+
+        public BSStaticWrapperObject_UnityEngine_ArticulationReducedSpace() : base( typeof( ArticulationReducedSpace ) )
         {
 
         }
+
+        #endregion
     }
 
 }

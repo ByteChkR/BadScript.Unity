@@ -1,4 +1,5 @@
 using BadScript.Tools.CodeGenerator.Runtime;
+using UnityEngine;
 
 namespace BadScript.Unity.Wrapper.Core.Generated
 {
@@ -6,10 +7,14 @@ namespace BadScript.Unity.Wrapper.Core.Generated
     public class BSStaticWrapperObject_UnityEngine_Component : BSStaticWrapperObject
 
     {
-        public BSStaticWrapperObject_UnityEngine_Component() : base(typeof(UnityEngine.Component))
+        #region Public
+
+        public BSStaticWrapperObject_UnityEngine_Component() : base( typeof( Component ) )
         {
 
         }
+
+        #endregion
     }
 
 }
