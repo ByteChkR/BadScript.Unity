@@ -19,6 +19,7 @@ namespace BadScript.Unity.Tools.CodeGenerator.Editor
             "UnityEngine.Object",
             "UnityEngine.GameObject",
             "UnityEngine.MonoBehaviour",
+            "UnityEngine.Behaviour",
             "UnityEngine.Physics",
             "UnityEngine.Input",
             "UnityEngine.UI.Slider",

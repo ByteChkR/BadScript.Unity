@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa606bc7cd41b4c48a21b5f876479f5c, type: 3}
+  m_Name: SettingsUtils
+  m_EditorClassIdentifier: 
+  m_IsBenchmark: 0
+  m_Arguments: []
+  m_Source: "log(\"Plugin: SettingsUtils\")\n\nfunction listSettings() => listCategory(environment.settings)\n\nfunction
+    listCategory(!category) => listSubCategory(category, 0)\n\nfunction listSubCategory(!category,
+    depth)\n{\n\n\tfunction indent(d)\n\t{\n\t\tr = \"\"\n\t\tfor i = 0 while< d\n\t\t{\n\t\t\tr
+    = r + \"\\t\"\n\t\t}\n\t\treturn r\n\t}\n\tprint(indent(depth) + \"Category Name:
+    \" + category.Name)\n\tprint(indent(depth+1)+\"IsPersistent:\" + category.IsPersistent)\n\n\tprint(indent(depth+1)
+    + \"Settings:\")\n\tforeach v in category.Pairs\n\t{\n\t\tprint(indent(depth+2)+v.Name
+    + \" = \" + v.Value)\n\t}\n\tprint(indent(depth+1) + \"Sub Categories:\")\n\tforeach
+    v in category.Categories\n\t{\n\t\tlistSubCategory(v, depth+2)\n\t}\n}"

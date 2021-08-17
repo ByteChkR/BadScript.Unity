@@ -27,6 +27,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b271d7ccf8c7e98428455a8e83b34009, type: 2}
   - {fileID: 11400000, guid: 4bb9cf2eccd434547ae4dd765d9090ed, type: 2}
   - {fileID: 11400000, guid: 08f30972072c9d041b682c20f2ab3894, type: 2}
+  - {fileID: 11400000, guid: 669b1219874e94f499dfd76b2a0eab4b, type: 2}
   DefaultInterfaces:
   - '#console'
   - '#core'
+  - '#wrapper_tools'

@@ -1002,6 +1002,7 @@ MonoBehaviour:
   m_ConsoleUI: {fileID: 1438217893376854402}
   m_OutputScrollRect: {fileID: 1438217893758364394}
   m_ConsoleOutput: {fileID: 1438217892718364082}
+  m_MaxConsoleCharacters: 20000
   m_ClearOnInput: 1
   m_ConsoleInput: {fileID: 1438217894014933327}
   m_ToggleKey: 288
@@ -1028,6 +1029,8 @@ MonoBehaviour:
   m_InputFunctionName: onInput
   m_ConsolePlugins:
   - {fileID: 11400000, guid: 2bf9d2c0c1d78c54eade99b621446d8f, type: 2}
+  - {fileID: 11400000, guid: aa7f3d8bd6c8a8c40900da6dfd19b6e7, type: 2}
+  - {fileID: 11400000, guid: b17c9b2c2ee3fa243809cb0a0f3e5957, type: 2}
 --- !u!1 &1438217893088960098
 GameObject:
   m_ObjectHideFlags: 0
@@ -1517,7 +1520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Content: {fileID: 1438217893895531444}
-  m_Horizontal: 1
+  m_Horizontal: 0
   m_Vertical: 1
   m_MovementType: 1
   m_Elasticity: 0.1

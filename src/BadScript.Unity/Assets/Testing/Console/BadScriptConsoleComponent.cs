@@ -133,7 +133,6 @@ public class BadScriptConsoleComponent : MonoBehaviour
     private void ConsoleInstance_OnClear()
     {
         m_ConsoleOutput.text = "";
-
         if ( IsShown )
         {
             StartCoroutine( ScrollBottomHelper() );
@@ -142,8 +141,8 @@ public class BadScriptConsoleComponent : MonoBehaviour
 
     private void ConsoleInstance_OnWrite( ABSObject obj )
     {
-        m_ConsoleOutput.text += obj.ConvertString();
-        EnsureSize();
+        string s = obj.ConvertString();
+        EnsureSize(s);
 
         if ( IsShown )
         {
@@ -153,8 +152,7 @@ public class BadScriptConsoleComponent : MonoBehaviour
 
     private void ConsoleInstance_OnWriteLine( ABSObject obj )
     {
-        m_ConsoleOutput.text += obj.ConvertString() + "\n";
-        EnsureSize();
+        EnsureSize(obj.ConvertString() + "\n");
 
         if ( IsShown )
         {
@@ -162,13 +160,16 @@ public class BadScriptConsoleComponent : MonoBehaviour
         }
     }
 
-    private void EnsureSize()
+    private void EnsureSize(string newText)
     {
-        if ( m_ConsoleOutput.text.Length > m_MaxConsoleCharacters )
+        if ( m_ConsoleOutput.text.Length + newText.Length > m_MaxConsoleCharacters )
         {
-            int sz = m_ConsoleOutput.text.Length - m_MaxConsoleCharacters;
-            m_ConsoleOutput.text = m_ConsoleOutput.text.Substring( sz, m_MaxConsoleCharacters );
+            int sz = ( m_ConsoleOutput.text.Length + newText.Length ) - m_MaxConsoleCharacters;
+            
+            m_ConsoleOutput.text = ( m_ConsoleOutput.text + newText ).Substring( sz, m_MaxConsoleCharacters );
         }
+        else
+            m_ConsoleOutput.text += newText;
     }
 
     private IEnumerator ScrollBottomHelper()

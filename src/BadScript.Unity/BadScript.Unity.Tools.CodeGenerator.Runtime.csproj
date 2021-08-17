@@ -54,6 +54,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\BadScript\Tools\CodeGenerator\Runtime\RuntimeCodeGenerator.cs" />
+    <Compile Include="Assets\BadScript\Tools\CodeGenerator\Runtime\WrapperToolsInterface.cs" />
+    <Compile Include="Assets\BadScript\Tools\CodeGenerator\Runtime\WrapperToolsInterfaceObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\BadScript\Tools\CodeGenerator\Runtime\BadScript.Unity.Tools.CodeGenerator.Runtime.asmdef" />

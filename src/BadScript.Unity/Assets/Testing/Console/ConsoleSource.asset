@@ -16,20 +16,23 @@ MonoBehaviour:
   m_Arguments: []
   m_Source: "function log(str)\r\n{\r\n\tprint(\"[LOG] \" + str)\r\n}\r\nfunction
     warn(str)\r\n{\r\n\tprint(\"[WARN] \" + str)\r\n}\r\n\r\nstring = environment.loadInterface(\"string\",
-    {})\r\n\r\nconsoleSettings = {\r\n\tWriteOutput = 0,\r\n\tWriteInput = 0,\r\n\tPrependReturn
-    = 0\r\n}\r\n\r\ninteractiveScope = null\r\ninteractiveScript = null\r\n\r\nfunction
-    load()\r\n{\r\n\tlog(\"Creating Sandbox Scope.. \")\r\n\tinteractiveScope = environment.createScope()\r\n\r\n\tenvironment.loadScopedString(interactiveScope,
-    \"ConsoleSettings = args[0]\", consoleSettings)\r\n\r\n\tinteractiveScript =
-    \"\"\r\n}\r\n\r\nfunction onInput(line)\r\n{\r\n\tif(consoleSettings.WriteInput)\r\n\t{\r\n\t\tprint(\"[INPUT]
+    {})\r\n\r\nuSettings = environment.settings.AddCategory(\"unity\")\ncSettings
+    = uSettings.AddCategory(\"console\")\ncWriteOut = cSettings.AddSetting(\"WriteOutput\",
+    \"0\")\ncWriteIn = cSettings.AddSetting(\"WriteInput\", \"0\")\ncPrependReturn
+    = cSettings.AddSetting(\"PrependReturn\", \"0\")\n\n\r\ninteractiveScope = null\r\ninteractiveScript
+    = null\r\n\r\nfunction load()\r\n{\r\n\tlog(\"Creating Sandbox Scope.. \")\r\n\tinteractiveScope
+    = environment.createScope()\r\n\r\n\tenvironment.loadScopedString(interactiveScope,
+    \"ConsoleSettings = args[0]\", cSettings)\r\n\r\n\tinteractiveScript = \"\"\r\n}\r\n\r\nfunction
+    onInput(line)\r\n{\r\n\tif(cWriteIn.Value != \"0\")\r\n\t{\r\n\t\tprint(\"[INPUT]
     \" + line)\r\n\t}\r\n\tif(string.toUpper(line) == \"\\\\RESET\" ||\r\n\t\t\tstring.toUpper(line)
     == \"\\\\CLEAR\")\r\n\t{\r\n\t\tlog(\"Clearing Script Content..\")\r\n\t\tinteractiveScript
     = \"\"\r\n\t}\r\n\telse if(string.toUpper(line) == \"\\\\RESTART\" ||\r\n\t\t\tstring.toUpper(line)
     == \"\\\\RELOAD\")\r\n\t{\r\n\t\tload()\r\n\t}\r\n\telse if(string.endsWith(line,
     \"/\"))\r\n\t{\r\n\t\tln = string.substr(line, 0, string.length(line) - 1)\r\n\t\tinteractiveScript
     = interactiveScript + \"\\n\" + ln\r\n\t}\r\n\telse\r\n\t{\r\n\t\tinteractiveScript
-    = interactiveScript + \"\\n\" + line\r\n\t\tif(consoleSettings.PrependReturn)\r\n\t\t{\r\n\t\t\tinteractiveScript
+    = interactiveScript + \"\\n\" + line\r\n\t\tif(cPrependReturn.Value != \"0\")\r\n\t\t{\r\n\t\t\tinteractiveScript
     = \"return \" + interactiveScript\r\n\t\t}\r\n\t\ttry\r\n\t\t{\r\n\t\t\tr = environment.loadScopedString(interactiveScope,
-    interactiveScript)\r\n\t\t\tif(consoleSettings.WriteOutput)\r\n\t\t\t{\r\n\t\t\t\tlog(\"Return:
+    interactiveScript)\r\n\t\t\tif(cWriteOut.Value != \"0\")\r\n\t\t\t{\r\n\t\t\t\tlog(\"Return:
     \" + debug(r))\r\n\t\t\t}\r\n\t\t}\r\n\t\tcatch (e)\r\n\t\t{\r\n\t\t\twarn(string.format(\"ERROR:
     '{0}' with message: '{1}'\\nStacktrace:\\n{2}\", e.type, e.message, e.trace))\r\n\t\t}\r\n\t\tinteractiveScript
     = \"\"\r\n\t}\r\n}\r\nfunction loadPlugins()\r\n{\r\n\tlog(\"Loading \" + args.size()

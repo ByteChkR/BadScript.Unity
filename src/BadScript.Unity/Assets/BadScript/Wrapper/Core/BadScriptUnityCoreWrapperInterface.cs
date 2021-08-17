@@ -12,7 +12,7 @@ public class BadScriptUnityCoreWrapperInterface : BadScriptInterfaceObject
     public override ABSScriptInterface Get()
     {
         WrapperHelper.AllowRecurseToString = false;
-
+        
         return new BadScriptWrapperInterface( "unity_core", new UnityCoreStaticDB(), new UnityCoreCTorDB() );
     }
 
