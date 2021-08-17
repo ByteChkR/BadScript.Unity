@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Experimental.Rendering;
 using UnityEngine.Profiling;
 using UnityEngine.Rendering;
+#pragma warning disable 618
 
 namespace BadScript.Unity.Wrapper.Core.Generated
 {

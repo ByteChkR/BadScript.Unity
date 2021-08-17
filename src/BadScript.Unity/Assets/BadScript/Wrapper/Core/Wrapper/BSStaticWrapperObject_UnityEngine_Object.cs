@@ -2,6 +2,7 @@ using BadScript.Common.Types;
 using BadScript.Common.Types.Implementations;
 using BadScript.Tools.CodeGenerator.Runtime;
 using UnityEngine;
+#pragma warning disable 618
 
 namespace BadScript.Unity.Wrapper.Core.Generated
 {

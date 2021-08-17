@@ -53,8 +53,8 @@
     <UnityVersion>2020.3.12f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\BadScript\Interfaces\Console\Scripts\UnityConsoleInput.cs" />
     <Compile Include="Assets\BadScript\Interfaces\Console\Scripts\BadScriptUnityConsoleInterface.cs" />
+    <Compile Include="Assets\BadScript\Interfaces\Console\Scripts\UnityConsoleInput.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\BadScript\Interfaces\Console\BadScript.ConsoleUtils.dll" />

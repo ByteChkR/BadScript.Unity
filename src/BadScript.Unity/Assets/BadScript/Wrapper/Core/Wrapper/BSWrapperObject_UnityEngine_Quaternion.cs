@@ -4,6 +4,7 @@ using BadScript.Common.Types.Implementations;
 using BadScript.Tools.CodeGenerator.Runtime;
 using BadScript.Utils.Reflection;
 using UnityEngine;
+#pragma warning disable 618
 
 namespace BadScript.Unity.Wrapper.Core.Generated
 {
@@ -15,6 +16,24 @@ namespace BadScript.Unity.Wrapper.Core.Generated
 
         public BSWrapperObject_UnityEngine_Quaternion( Quaternion obj ) : base( obj )
         {
+            m_Properties["get_Item"] = new BSFunctionReference(
+                new BSFunction(
+                    "function get_Item(index)",
+                    a => new BSObject( ( decimal ) m_InternalObject[WrapperHelper.UnwrapObject < int >( a[0] )] ),
+                    1 ) );
+
+            m_Properties["set_Item"] = new BSFunctionReference(
+                new BSFunction(
+                    "function set_Item(index, value)",
+                    a =>
+                    {
+                        m_InternalObject[WrapperHelper.UnwrapObject < int >( a[0] )] =
+                            WrapperHelper.UnwrapObject < float >( a[1] );
+
+                        return new BSObject( null );
+                    },
+                    2 ) );
+
             m_Properties["eulerAngles"] = new BSReflectionReference(
                 () => new BSWrapperObject_UnityEngine_Vector3( m_InternalObject.eulerAngles ),
                 x => m_InternalObject.eulerAngles = WrapperHelper.UnwrapObject < Vector3 >( x ) );

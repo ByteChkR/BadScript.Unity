@@ -43,6 +43,45 @@ namespace BadScript.Unity.Wrapper.Core.Generated
                 () => new BSWrapperObject_UnityEngine_Matrix4x4( m_InternalObject.transpose ),
                 null );
 
+            m_Properties["get_Item"] = new BSFunctionReference(
+                new BSFunction(
+                    "function get_Item(row, column)",
+                    a => new BSObject(
+                        ( decimal ) m_InternalObject[WrapperHelper.UnwrapObject < int >( a[0] ),
+                                                     WrapperHelper.UnwrapObject < int >( a[1] )] ),
+                    2 ) );
+
+            m_Properties["set_Item"] = new BSFunctionReference(
+                new BSFunction(
+                    "function set_Item(row, column, value)",
+                    a =>
+                    {
+                        m_InternalObject[WrapperHelper.UnwrapObject < int >( a[0] ),
+                                         WrapperHelper.UnwrapObject < int >( a[1] )] =
+                            WrapperHelper.UnwrapObject < float >( a[2] );
+
+                        return new BSObject( null );
+                    },
+                    3 ) );
+
+            m_Properties["get_Item"] = new BSFunctionReference(
+                new BSFunction(
+                    "function get_Item(index)",
+                    a => new BSObject( ( decimal ) m_InternalObject[WrapperHelper.UnwrapObject < int >( a[0] )] ),
+                    1 ) );
+
+            m_Properties["set_Item"] = new BSFunctionReference(
+                new BSFunction(
+                    "function set_Item(index, value)",
+                    a =>
+                    {
+                        m_InternalObject[WrapperHelper.UnwrapObject < int >( a[0] )] =
+                            WrapperHelper.UnwrapObject < float >( a[1] );
+
+                        return new BSObject( null );
+                    },
+                    2 ) );
+
             m_Properties["m00"] = new BSReflectionReference(
                 () => new BSObject( ( decimal ) m_InternalObject.m00 ),
                 x => m_InternalObject.m00 = WrapperHelper.UnwrapObject < float >( x ) );

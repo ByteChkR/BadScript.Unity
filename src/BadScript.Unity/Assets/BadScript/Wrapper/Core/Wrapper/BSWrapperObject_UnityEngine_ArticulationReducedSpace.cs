@@ -14,6 +14,24 @@ namespace BadScript.Unity.Wrapper.Core.Generated
 
         public BSWrapperObject_UnityEngine_ArticulationReducedSpace( ArticulationReducedSpace obj ) : base( obj )
         {
+            m_Properties["get_Item"] = new BSFunctionReference(
+                new BSFunction(
+                    "function get_Item(i)",
+                    a => new BSObject( ( decimal ) m_InternalObject[WrapperHelper.UnwrapObject < int >( a[0] )] ),
+                    1 ) );
+
+            m_Properties["set_Item"] = new BSFunctionReference(
+                new BSFunction(
+                    "function set_Item(i, value)",
+                    a =>
+                    {
+                        m_InternalObject[WrapperHelper.UnwrapObject < int >( a[0] )] =
+                            WrapperHelper.UnwrapObject < float >( a[1] );
+
+                        return new BSObject( null );
+                    },
+                    2 ) );
+
             m_Properties["dofCount"] = new BSReflectionReference(
                 () => new BSObject( ( decimal ) m_InternalObject.dofCount ),
                 x => m_InternalObject.dofCount = WrapperHelper.UnwrapObject < int >( x ) );

@@ -24,17 +24,12 @@ using UnityEngine.Profiling;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
-using UnityEngine.UIElements.Experimental;
-using Cursor = UnityEngine.UIElements.Cursor;
-using Image = UnityEngine.UI.Image;
 using Object = UnityEngine.Object;
-using Slider = UnityEngine.UIElements.Slider;
 
 namespace BadScript.Unity.Wrapper.Core
 {
 
-    public class UnityCoreCtorDB : IWrapperConstructorDataBase
+    public class UnityCoreCTorDB : IWrapperConstructorDataBase
     {
         private readonly Dictionary < Type, (IWrapperObjectCreator[], Func < object[], object >) > m_Creators;
 
@@ -42,10 +37,42 @@ namespace BadScript.Unity.Wrapper.Core
 
         #region Public
 
-        public UnityCoreCtorDB()
+        public UnityCoreCTorDB()
         {
             m_Creators = new Dictionary < Type, (IWrapperObjectCreator[], Func < object[], object >) >
             {
+                {
+                    typeof( SceneManager ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_SceneManagement_SceneManager(
+                          ( SceneManager ) m_Creators[typeof( SceneManager )].
+                                           Item1.First( x => x.ArgCount == a.Length ).
+                                           Create( a ) ) )
+                },
+                {
+                    typeof( object ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_System_Object(
+                          ( object ) m_Creators[typeof( object )].
+                                     Item1.First( x => x.ArgCount == a.Length ).
+                                     Create( a ) ) )
+                },
+                {
+                    typeof( Scene ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_SceneManagement_Scene(
+                          ( Scene ) m_Creators[typeof( Scene )].
+                                    Item1.First( x => x.ArgCount == a.Length ).
+                                    Create( a ) ) )
+                },
+                {
+                    typeof( CreateSceneParameters ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_SceneManagement_CreateSceneParameters(
+                          ( CreateSceneParameters ) m_Creators[typeof( CreateSceneParameters )].
+                                                    Item1.First( x => x.ArgCount == a.Length ).
+                                                    Create( a ) ) )
+                },
                 {
                     typeof( GameObject ),
                     ( new IWrapperObjectCreator[] { },
@@ -69,14 +96,6 @@ namespace BadScript.Unity.Wrapper.Core
                           ( Vector3 ) m_Creators[typeof( Vector3 )].
                                       Item1.First( x => x.ArgCount == a.Length ).
                                       Create( a ) ) )
-                },
-                {
-                    typeof( object ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Object(
-                          ( object ) m_Creators[typeof( object )].
-                                     Item1.First( x => x.ArgCount == a.Length ).
-                                     Create( a ) ) )
                 },
                 {
                     typeof( IFormatProvider ),
@@ -143,12 +162,28 @@ namespace BadScript.Unity.Wrapper.Core
                                         Create( a ) ) )
                 },
                 {
-                    typeof( Scene ),
+                    typeof( LoadSceneParameters ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_SceneManagement_Scene(
-                          ( Scene ) m_Creators[typeof( Scene )].
-                                    Item1.First( x => x.ArgCount == a.Length ).
-                                    Create( a ) ) )
+                      a => new BSWrapperObject_UnityEngine_SceneManagement_LoadSceneParameters(
+                          ( LoadSceneParameters ) m_Creators[typeof( LoadSceneParameters )].
+                                                  Item1.First( x => x.ArgCount == a.Length ).
+                                                  Create( a ) ) )
+                },
+                {
+                    typeof( AsyncOperation ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_AsyncOperation(
+                          ( AsyncOperation ) m_Creators[typeof( AsyncOperation )].
+                                             Item1.First( x => x.ArgCount == a.Length ).
+                                             Create( a ) ) )
+                },
+                {
+                    typeof( Object ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_Object(
+                          ( Object ) m_Creators[typeof( Object )].
+                                     Item1.First( x => x.ArgCount == a.Length ).
+                                     Create( a ) ) )
                 },
                 {
                     typeof( MonoBehaviour ),
@@ -165,14 +200,6 @@ namespace BadScript.Unity.Wrapper.Core
                           ( Coroutine ) m_Creators[typeof( Coroutine )].
                                         Item1.First( x => x.ArgCount == a.Length ).
                                         Create( a ) ) )
-                },
-                {
-                    typeof( Object ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_Object(
-                          ( Object ) m_Creators[typeof( Object )].
-                                     Item1.First( x => x.ArgCount == a.Length ).
-                                     Create( a ) ) )
                 },
                 {
                     typeof( Physics ),
@@ -317,20 +344,50 @@ namespace BadScript.Unity.Wrapper.Core
                                                 Create( a ) ) )
                 },
                 {
-                    typeof( LayerMask ),
+                    typeof( Slider ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_LayerMask(
-                          ( LayerMask ) m_Creators[typeof( LayerMask )].
-                                        Item1.First( x => x.ArgCount == a.Length ).
-                                        Create( a ) ) )
-                },
-                {
-                    typeof( Camera ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_Camera(
-                          ( Camera ) m_Creators[typeof( Camera )].
+                      a => new BSWrapperObject_UnityEngine_UI_Slider(
+                          ( Slider ) m_Creators[typeof( Slider )].
                                      Item1.First( x => x.ArgCount == a.Length ).
                                      Create( a ) ) )
+                },
+                {
+                    typeof( RectTransform ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_RectTransform(
+                          ( RectTransform ) m_Creators[typeof( RectTransform )].
+                                            Item1.First( x => x.ArgCount == a.Length ).
+                                            Create( a ) ) )
+                },
+                {
+                    typeof( Rect ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_Rect(
+                          ( Rect ) m_Creators[typeof( Rect )].Item1.First( x => x.ArgCount == a.Length ).Create( a ) ) )
+                },
+                {
+                    typeof( Navigation ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_UI_Navigation(
+                          ( Navigation ) m_Creators[typeof( Navigation )].
+                                         Item1.First( x => x.ArgCount == a.Length ).
+                                         Create( a ) ) )
+                },
+                {
+                    typeof( Selectable ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_UI_Selectable(
+                          ( Selectable ) m_Creators[typeof( Selectable )].
+                                         Item1.First( x => x.ArgCount == a.Length ).
+                                         Create( a ) ) )
+                },
+                {
+                    typeof( ColorBlock ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_UI_ColorBlock(
+                          ( ColorBlock ) m_Creators[typeof( ColorBlock )].
+                                         Item1.First( x => x.ArgCount == a.Length ).
+                                         Create( a ) ) )
                 },
                 {
                     typeof( Color ),
@@ -341,26 +398,36 @@ namespace BadScript.Unity.Wrapper.Core
                                     Create( a ) ) )
                 },
                 {
-                    typeof( Rect ),
+                    typeof( SpriteState ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_Rect(
-                          ( Rect ) m_Creators[typeof( Rect )].Item1.First( x => x.ArgCount == a.Length ).Create( a ) ) )
+                      a => new BSWrapperObject_UnityEngine_UI_SpriteState(
+                          ( SpriteState ) m_Creators[typeof( SpriteState )].
+                                          Item1.First( x => x.ArgCount == a.Length ).
+                                          Create( a ) ) )
                 },
                 {
-                    typeof( RenderTexture ),
+                    typeof( Sprite ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_RenderTexture(
-                          ( RenderTexture ) m_Creators[typeof( RenderTexture )].
-                                            Item1.First( x => x.ArgCount == a.Length ).
-                                            Create( a ) ) )
+                      a => new BSWrapperObject_UnityEngine_Sprite(
+                          ( Sprite ) m_Creators[typeof( Sprite )].
+                                     Item1.First( x => x.ArgCount == a.Length ).
+                                     Create( a ) ) )
                 },
                 {
-                    typeof( RenderBuffer ),
+                    typeof( Texture2D ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_RenderBuffer(
-                          ( RenderBuffer ) m_Creators[typeof( RenderBuffer )].
-                                           Item1.First( x => x.ArgCount == a.Length ).
-                                           Create( a ) ) )
+                      a => new BSWrapperObject_UnityEngine_Texture2D(
+                          ( Texture2D ) m_Creators[typeof( Texture2D )].
+                                        Item1.First( x => x.ArgCount == a.Length ).
+                                        Create( a ) ) )
+                },
+                {
+                    typeof( Hash128 ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_Hash128(
+                          ( Hash128 ) m_Creators[typeof( Hash128 )].
+                                      Item1.First( x => x.ArgCount == a.Length ).
+                                      Create( a ) ) )
                 },
                 {
                     typeof( IntPtr ),
@@ -371,20 +438,28 @@ namespace BadScript.Unity.Wrapper.Core
                                      Create( a ) ) )
                 },
                 {
-                    typeof( RenderTextureDescriptor ),
+                    typeof( AnimationTriggers ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_RenderTextureDescriptor(
-                          ( RenderTextureDescriptor ) m_Creators[typeof( RenderTextureDescriptor )].
-                                                      Item1.First( x => x.ArgCount == a.Length ).
-                                                      Create( a ) ) )
+                      a => new BSWrapperObject_UnityEngine_UI_AnimationTriggers(
+                          ( AnimationTriggers ) m_Creators[typeof( AnimationTriggers )].
+                                                Item1.First( x => x.ArgCount == a.Length ).
+                                                Create( a ) ) )
                 },
                 {
-                    typeof( Hash128 ),
+                    typeof( Graphic ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_Hash128(
-                          ( Hash128 ) m_Creators[typeof( Hash128 )].
+                      a => new BSWrapperObject_UnityEngine_UI_Graphic(
+                          ( Graphic ) m_Creators[typeof( Graphic )].
                                       Item1.First( x => x.ArgCount == a.Length ).
                                       Create( a ) ) )
+                },
+                {
+                    typeof( Material ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_Material(
+                          ( Material ) m_Creators[typeof( Material )].
+                                       Item1.First( x => x.ArgCount == a.Length ).
+                                       Create( a ) ) )
                 },
                 {
                     typeof( Shader ),
@@ -409,6 +484,30 @@ namespace BadScript.Unity.Wrapper.Core
                           ( Texture ) m_Creators[typeof( Texture )].
                                       Item1.First( x => x.ArgCount == a.Length ).
                                       Create( a ) ) )
+                },
+                {
+                    typeof( RenderTexture ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_RenderTexture(
+                          ( RenderTexture ) m_Creators[typeof( RenderTexture )].
+                                            Item1.First( x => x.ArgCount == a.Length ).
+                                            Create( a ) ) )
+                },
+                {
+                    typeof( RenderBuffer ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_RenderBuffer(
+                          ( RenderBuffer ) m_Creators[typeof( RenderBuffer )].
+                                           Item1.First( x => x.ArgCount == a.Length ).
+                                           Create( a ) ) )
+                },
+                {
+                    typeof( RenderTextureDescriptor ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_RenderTextureDescriptor(
+                          ( RenderTextureDescriptor ) m_Creators[typeof( RenderTextureDescriptor )].
+                                                      Item1.First( x => x.ArgCount == a.Length ).
+                                                      Create( a ) ) )
                 },
                 {
                     typeof( ComputeBuffer ),
@@ -441,6 +540,22 @@ namespace BadScript.Unity.Wrapper.Core
                           ( GraphicsBuffer ) m_Creators[typeof( GraphicsBuffer )].
                                              Item1.First( x => x.ArgCount == a.Length ).
                                              Create( a ) ) )
+                },
+                {
+                    typeof( Canvas ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_Canvas(
+                          ( Canvas ) m_Creators[typeof( Canvas )].
+                                     Item1.First( x => x.ArgCount == a.Length ).
+                                     Create( a ) ) )
+                },
+                {
+                    typeof( Camera ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_Camera(
+                          ( Camera ) m_Creators[typeof( Camera )].
+                                     Item1.First( x => x.ArgCount == a.Length ).
+                                     Create( a ) ) )
                 },
                 {
                     typeof( Cubemap ),
@@ -499,14 +614,6 @@ namespace BadScript.Unity.Wrapper.Core
                                        Create( a ) ) )
                 },
                 {
-                    typeof( Material ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_Material(
-                          ( Material ) m_Creators[typeof( Material )].
-                                       Item1.First( x => x.ArgCount == a.Length ).
-                                       Create( a ) ) )
-                },
-                {
                     typeof( MaterialPropertyBlock ),
                     ( new IWrapperObjectCreator[] { },
                       a => new BSWrapperObject_UnityEngine_MaterialPropertyBlock(
@@ -537,6 +644,14 @@ namespace BadScript.Unity.Wrapper.Core
                           ( RenderTargetBinding ) m_Creators[typeof( RenderTargetBinding )].
                                                   Item1.First( x => x.ArgCount == a.Length ).
                                                   Create( a ) ) )
+                },
+                {
+                    typeof( GraphicsFence ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_Rendering_GraphicsFence(
+                          ( GraphicsFence ) m_Creators[typeof( GraphicsFence )].
+                                            Item1.First( x => x.ArgCount == a.Length ).
+                                            Create( a ) ) )
                 },
                 {
                     typeof( Mesh ),
@@ -577,116 +692,92 @@ namespace BadScript.Unity.Wrapper.Core
                                          Create( a ) ) )
                 },
                 {
-                    typeof( GraphicsFence ),
+                    typeof( CanvasRenderer ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_Rendering_GPUFence(
-                          ( GraphicsFence ) m_Creators[typeof( GraphicsFence )].
-                                            Item1.First( x => x.ArgCount == a.Length ).
-                                            Create( a ) ) )
-                },
-                {
-                    typeof( MeshFilter ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_MeshFilter(
-                          ( MeshFilter ) m_Creators[typeof( MeshFilter )].
-                                         Item1.First( x => x.ArgCount == a.Length ).
-                                         Create( a ) ) )
-                },
-                {
-                    typeof( MeshCollider ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_MeshCollider(
-                          ( MeshCollider ) m_Creators[typeof( MeshCollider )].
-                                           Item1.First( x => x.ArgCount == a.Length ).
-                                           Create( a ) ) )
-                },
-                {
-                    typeof( BoxCollider ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_BoxCollider(
-                          ( BoxCollider ) m_Creators[typeof( BoxCollider )].
-                                          Item1.First( x => x.ArgCount == a.Length ).
-                                          Create( a ) ) )
-                },
-                {
-                    typeof( SphereCollider ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_SphereCollider(
-                          ( SphereCollider ) m_Creators[typeof( SphereCollider )].
+                      a => new BSWrapperObject_UnityEngine_CanvasRenderer(
+                          ( CanvasRenderer ) m_Creators[typeof( CanvasRenderer )].
                                              Item1.First( x => x.ArgCount == a.Length ).
                                              Create( a ) ) )
                 },
                 {
-                    typeof( CapsuleCollider ),
+                    typeof( UnityAction ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_CapsuleCollider(
-                          ( CapsuleCollider ) m_Creators[typeof( CapsuleCollider )].
-                                              Item1.First( x => x.ArgCount == a.Length ).
-                                              Create( a ) ) )
+                      a => new BSWrapperObject_UnityEngine_Events_UnityAction(
+                          ( UnityAction ) m_Creators[typeof( UnityAction )].
+                                          Item1.First( x => x.ArgCount == a.Length ).
+                                          Create( a ) ) )
                 },
                 {
-                    typeof( RectTransform ),
+                    typeof( MethodInfo ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_RectTransform(
-                          ( RectTransform ) m_Creators[typeof( RectTransform )].
-                                            Item1.First( x => x.ArgCount == a.Length ).
-                                            Create( a ) ) )
-                },
-                {
-                    typeof( ScrollView ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_ScrollView(
-                          ( ScrollView ) m_Creators[typeof( ScrollView )].
+                      a => new BSWrapperObject_System_Reflection_MethodInfo(
+                          ( MethodInfo ) m_Creators[typeof( MethodInfo )].
                                          Item1.First( x => x.ArgCount == a.Length ).
                                          Create( a ) ) )
                 },
                 {
-                    typeof( VisualElement ),
+                    typeof( ParameterInfo ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_VisualElement(
-                          ( VisualElement ) m_Creators[typeof( VisualElement )].
+                      a => new BSWrapperObject_System_Reflection_ParameterInfo(
+                          ( ParameterInfo ) m_Creators[typeof( ParameterInfo )].
                                             Item1.First( x => x.ArgCount == a.Length ).
                                             Create( a ) ) )
                 },
                 {
-                    typeof( FocusController ),
+                    typeof( MemberInfo ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_FocusController(
-                          ( FocusController ) m_Creators[typeof( FocusController )].
-                                              Item1.First( x => x.ArgCount == a.Length ).
-                                              Create( a ) ) )
+                      a => new BSWrapperObject_System_Reflection_MemberInfo(
+                          ( MemberInfo ) m_Creators[typeof( MemberInfo )].
+                                         Item1.First( x => x.ArgCount == a.Length ).
+                                         Create( a ) ) )
                 },
                 {
-                    typeof( Focusable ),
+                    typeof( Module ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_Focusable(
-                          ( Focusable ) m_Creators[typeof( Focusable )].
-                                        Item1.First( x => x.ArgCount == a.Length ).
-                                        Create( a ) ) )
+                      a => new BSWrapperObject_System_Reflection_Module(
+                          ( Module ) m_Creators[typeof( Module )].
+                                     Item1.First( x => x.ArgCount == a.Length ).
+                                     Create( a ) ) )
                 },
                 {
-                    typeof( EventBase ),
+                    typeof( ModuleHandle ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_EventBase(
-                          ( EventBase ) m_Creators[typeof( EventBase )].
-                                        Item1.First( x => x.ArgCount == a.Length ).
-                                        Create( a ) ) )
+                      a => new BSWrapperObject_System_ModuleHandle(
+                          ( ModuleHandle ) m_Creators[typeof( ModuleHandle )].
+                                           Item1.First( x => x.ArgCount == a.Length ).
+                                           Create( a ) ) )
                 },
                 {
-                    typeof( IEventHandler ),
+                    typeof( RuntimeFieldHandle ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_IEventHandler(
-                          ( IEventHandler ) m_Creators[typeof( IEventHandler )].
-                                            Item1.First( x => x.ArgCount == a.Length ).
-                                            Create( a ) ) )
+                      a => new BSWrapperObject_System_RuntimeFieldHandle(
+                          ( RuntimeFieldHandle ) m_Creators[typeof( RuntimeFieldHandle )].
+                                                 Item1.First( x => x.ArgCount == a.Length ).
+                                                 Create( a ) ) )
                 },
                 {
-                    typeof( Event ),
+                    typeof( SerializationInfo ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_Event(
-                          ( Event ) m_Creators[typeof( Event )].
-                                    Item1.First( x => x.ArgCount == a.Length ).
-                                    Create( a ) ) )
+                      a => new BSWrapperObject_System_Runtime_Serialization_SerializationInfo(
+                          ( SerializationInfo ) m_Creators[typeof( SerializationInfo )].
+                                                Item1.First( x => x.ArgCount == a.Length ).
+                                                Create( a ) ) )
+                },
+                {
+                    typeof( SerializationInfoEnumerator ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_System_Runtime_Serialization_SerializationInfoEnumerator(
+                          ( SerializationInfoEnumerator ) m_Creators[typeof( SerializationInfoEnumerator )].
+                                                          Item1.First( x => x.ArgCount == a.Length ).
+                                                          Create( a ) ) )
+                },
+                {
+                    typeof( SerializationEntry ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_System_Runtime_Serialization_SerializationEntry(
+                          ( SerializationEntry ) m_Creators[typeof( SerializationEntry )].
+                                                 Item1.First( x => x.ArgCount == a.Length ).
+                                                 Create( a ) ) )
                 },
                 {
                     typeof( char ),
@@ -773,76 +864,52 @@ namespace BadScript.Unity.Wrapper.Core
                                        Create( a ) ) )
                 },
                 {
-                    typeof( MethodInfo ),
+                    typeof( IPermission ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Reflection_MethodInfo(
-                          ( MethodInfo ) m_Creators[typeof( MethodInfo )].
-                                         Item1.First( x => x.ArgCount == a.Length ).
-                                         Create( a ) ) )
+                      a => new BSWrapperObject_System_Security_IPermission(
+                          ( IPermission ) m_Creators[typeof( IPermission )].
+                                          Item1.First( x => x.ArgCount == a.Length ).
+                                          Create( a ) ) )
                 },
                 {
-                    typeof( ParameterInfo ),
+                    typeof( SecurityElement ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Reflection_ParameterInfo(
-                          ( ParameterInfo ) m_Creators[typeof( ParameterInfo )].
-                                            Item1.First( x => x.ArgCount == a.Length ).
-                                            Create( a ) ) )
+                      a => new BSWrapperObject_System_Security_SecurityElement(
+                          ( SecurityElement ) m_Creators[typeof( SecurityElement )].
+                                              Item1.First( x => x.ArgCount == a.Length ).
+                                              Create( a ) ) )
                 },
                 {
-                    typeof( MemberInfo ),
+                    typeof( Hashtable ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Reflection_MemberInfo(
-                          ( MemberInfo ) m_Creators[typeof( MemberInfo )].
-                                         Item1.First( x => x.ArgCount == a.Length ).
-                                         Create( a ) ) )
+                      a => new BSWrapperObject_System_Collections_Hashtable(
+                          ( Hashtable ) m_Creators[typeof( Hashtable )].
+                                        Item1.First( x => x.ArgCount == a.Length ).
+                                        Create( a ) ) )
                 },
                 {
-                    typeof( Module ),
+                    typeof( ICollection ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Reflection_Module(
-                          ( Module ) m_Creators[typeof( Module )].
-                                     Item1.First( x => x.ArgCount == a.Length ).
-                                     Create( a ) ) )
+                      a => new BSWrapperObject_System_Collections_ICollection(
+                          ( ICollection ) m_Creators[typeof( ICollection )].
+                                          Item1.First( x => x.ArgCount == a.Length ).
+                                          Create( a ) ) )
                 },
                 {
-                    typeof( ModuleHandle ),
+                    typeof( IDictionaryEnumerator ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_ModuleHandle(
-                          ( ModuleHandle ) m_Creators[typeof( ModuleHandle )].
-                                           Item1.First( x => x.ArgCount == a.Length ).
-                                           Create( a ) ) )
+                      a => new BSWrapperObject_System_Collections_IDictionaryEnumerator(
+                          ( IDictionaryEnumerator ) m_Creators[typeof( IDictionaryEnumerator )].
+                                                    Item1.First( x => x.ArgCount == a.Length ).
+                                                    Create( a ) ) )
                 },
                 {
-                    typeof( RuntimeFieldHandle ),
+                    typeof( DictionaryEntry ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_RuntimeFieldHandle(
-                          ( RuntimeFieldHandle ) m_Creators[typeof( RuntimeFieldHandle )].
-                                                 Item1.First( x => x.ArgCount == a.Length ).
-                                                 Create( a ) ) )
-                },
-                {
-                    typeof( SerializationInfo ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Runtime_Serialization_SerializationInfo(
-                          ( SerializationInfo ) m_Creators[typeof( SerializationInfo )].
-                                                Item1.First( x => x.ArgCount == a.Length ).
-                                                Create( a ) ) )
-                },
-                {
-                    typeof( SerializationInfoEnumerator ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Runtime_Serialization_SerializationInfoEnumerator(
-                          ( SerializationInfoEnumerator ) m_Creators[typeof( SerializationInfoEnumerator )].
-                                                          Item1.First( x => x.ArgCount == a.Length ).
-                                                          Create( a ) ) )
-                },
-                {
-                    typeof( SerializationEntry ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Runtime_Serialization_SerializationEntry(
-                          ( SerializationEntry ) m_Creators[typeof( SerializationEntry )].
-                                                 Item1.First( x => x.ArgCount == a.Length ).
-                                                 Create( a ) ) )
+                      a => new BSWrapperObject_System_Collections_DictionaryEntry(
+                          ( DictionaryEntry ) m_Creators[typeof( DictionaryEntry )].
+                                              Item1.First( x => x.ArgCount == a.Length ).
+                                              Create( a ) ) )
                 },
                 {
                     typeof( StreamingContext ),
@@ -853,28 +920,36 @@ namespace BadScript.Unity.Wrapper.Core
                                                Create( a ) ) )
                 },
                 {
-                    typeof( RuntimeMethodHandle ),
+                    typeof( ArrayList ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_RuntimeMethodHandle(
-                          ( RuntimeMethodHandle ) m_Creators[typeof( RuntimeMethodHandle )].
-                                                  Item1.First( x => x.ArgCount == a.Length ).
-                                                  Create( a ) ) )
+                      a => new BSWrapperObject_System_Collections_ArrayList(
+                          ( ArrayList ) m_Creators[typeof( ArrayList )].
+                                        Item1.First( x => x.ArgCount == a.Length ).
+                                        Create( a ) ) )
                 },
                 {
-                    typeof( RuntimeTypeHandle ),
+                    typeof( IList ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_RuntimeTypeHandle(
-                          ( RuntimeTypeHandle ) m_Creators[typeof( RuntimeTypeHandle )].
-                                                Item1.First( x => x.ArgCount == a.Length ).
-                                                Create( a ) ) )
+                      a => new BSWrapperObject_System_Collections_IList(
+                          ( IList ) m_Creators[typeof( IList )].
+                                    Item1.First( x => x.ArgCount == a.Length ).
+                                    Create( a ) ) )
                 },
                 {
-                    typeof( TypeFilter ),
+                    typeof( ModuleResolveEventHandler ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Reflection_TypeFilter(
-                          ( TypeFilter ) m_Creators[typeof( TypeFilter )].
-                                         Item1.First( x => x.ArgCount == a.Length ).
-                                         Create( a ) ) )
+                      a => new BSWrapperObject_System_Reflection_ModuleResolveEventHandler(
+                          ( ModuleResolveEventHandler ) m_Creators[typeof( ModuleResolveEventHandler )].
+                                                        Item1.First( x => x.ArgCount == a.Length ).
+                                                        Create( a ) ) )
+                },
+                {
+                    typeof( ResolveEventArgs ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_System_ResolveEventArgs(
+                          ( ResolveEventArgs ) m_Creators[typeof( ResolveEventArgs )].
+                                               Item1.First( x => x.ArgCount == a.Length ).
+                                               Create( a ) ) )
                 },
                 {
                     typeof( IAsyncResult ),
@@ -909,164 +984,12 @@ namespace BadScript.Unity.Wrapper.Core
                                           Create( a ) ) )
                 },
                 {
-                    typeof( ICollection ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Collections_ICollection(
-                          ( ICollection ) m_Creators[typeof( ICollection )].
-                                          Item1.First( x => x.ArgCount == a.Length ).
-                                          Create( a ) ) )
-                },
-                {
-                    typeof( IDictionaryEnumerator ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Collections_IDictionaryEnumerator(
-                          ( IDictionaryEnumerator ) m_Creators[typeof( IDictionaryEnumerator )].
-                                                    Item1.First( x => x.ArgCount == a.Length ).
-                                                    Create( a ) ) )
-                },
-                {
-                    typeof( DictionaryEntry ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Collections_DictionaryEntry(
-                          ( DictionaryEntry ) m_Creators[typeof( DictionaryEntry )].
-                                              Item1.First( x => x.ArgCount == a.Length ).
-                                              Create( a ) ) )
-                },
-                {
                     typeof( AsyncCallback ),
                     ( new IWrapperObjectCreator[] { },
                       a => new BSWrapperObject_System_AsyncCallback(
                           ( AsyncCallback ) m_Creators[typeof( AsyncCallback )].
                                             Item1.First( x => x.ArgCount == a.Length ).
                                             Create( a ) ) )
-                },
-                {
-                    typeof( FieldInfo ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Reflection_FieldInfo(
-                          ( FieldInfo ) m_Creators[typeof( FieldInfo )].
-                                        Item1.First( x => x.ArgCount == a.Length ).
-                                        Create( a ) ) )
-                },
-                {
-                    typeof( Binder ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Reflection_Binder(
-                          ( Binder ) m_Creators[typeof( Binder )].
-                                     Item1.First( x => x.ArgCount == a.Length ).
-                                     Create( a ) ) )
-                },
-                {
-                    typeof( MethodBase ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Reflection_MethodBase(
-                          ( MethodBase ) m_Creators[typeof( MethodBase )].
-                                         Item1.First( x => x.ArgCount == a.Length ).
-                                         Create( a ) ) )
-                },
-                {
-                    typeof( MethodBody ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Reflection_MethodBody(
-                          ( MethodBody ) m_Creators[typeof( MethodBody )].
-                                         Item1.First( x => x.ArgCount == a.Length ).
-                                         Create( a ) ) )
-                },
-                {
-                    typeof( PropertyInfo ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Reflection_PropertyInfo(
-                          ( PropertyInfo ) m_Creators[typeof( PropertyInfo )].
-                                           Item1.First( x => x.ArgCount == a.Length ).
-                                           Create( a ) ) )
-                },
-                {
-                    typeof( X509Certificate ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Security_Cryptography_X509Certificates_X509Certificate(
-                          ( X509Certificate ) m_Creators[typeof( X509Certificate )].
-                                              Item1.First( x => x.ArgCount == a.Length ).
-                                              Create( a ) ) )
-                },
-                {
-                    typeof( SecureString ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Security_SecureString(
-                          ( SecureString ) m_Creators[typeof( SecureString )].
-                                           Item1.First( x => x.ArgCount == a.Length ).
-                                           Create( a ) ) )
-                },
-                {
-                    typeof( ICustomAttributeProvider ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Reflection_ICustomAttributeProvider(
-                          ( ICustomAttributeProvider ) m_Creators[typeof( ICustomAttributeProvider )].
-                                                       Item1.First( x => x.ArgCount == a.Length ).
-                                                       Create( a ) ) )
-                },
-                {
-                    typeof( Delegate ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Delegate(
-                          ( Delegate ) m_Creators[typeof( Delegate )].
-                                       Item1.First( x => x.ArgCount == a.Length ).
-                                       Create( a ) ) )
-                },
-                {
-                    typeof( IPermission ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Security_IPermission(
-                          ( IPermission ) m_Creators[typeof( IPermission )].
-                                          Item1.First( x => x.ArgCount == a.Length ).
-                                          Create( a ) ) )
-                },
-                {
-                    typeof( SecurityElement ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Security_SecurityElement(
-                          ( SecurityElement ) m_Creators[typeof( SecurityElement )].
-                                              Item1.First( x => x.ArgCount == a.Length ).
-                                              Create( a ) ) )
-                },
-                {
-                    typeof( Hashtable ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Collections_Hashtable(
-                          ( Hashtable ) m_Creators[typeof( Hashtable )].
-                                        Item1.First( x => x.ArgCount == a.Length ).
-                                        Create( a ) ) )
-                },
-                {
-                    typeof( ArrayList ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Collections_ArrayList(
-                          ( ArrayList ) m_Creators[typeof( ArrayList )].
-                                        Item1.First( x => x.ArgCount == a.Length ).
-                                        Create( a ) ) )
-                },
-                {
-                    typeof( IList ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Collections_IList(
-                          ( IList ) m_Creators[typeof( IList )].
-                                    Item1.First( x => x.ArgCount == a.Length ).
-                                    Create( a ) ) )
-                },
-                {
-                    typeof( ModuleResolveEventHandler ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_Reflection_ModuleResolveEventHandler(
-                          ( ModuleResolveEventHandler ) m_Creators[typeof( ModuleResolveEventHandler )].
-                                                        Item1.First( x => x.ArgCount == a.Length ).
-                                                        Create( a ) ) )
-                },
-                {
-                    typeof( ResolveEventArgs ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_System_ResolveEventArgs(
-                          ( ResolveEventArgs ) m_Creators[typeof( ResolveEventArgs )].
-                                               Item1.First( x => x.ArgCount == a.Length ).
-                                               Create( a ) ) )
                 },
                 {
                     typeof( FileStream ),
@@ -1145,6 +1068,62 @@ namespace BadScript.Unity.Wrapper.Core
                           ( Exception ) m_Creators[typeof( Exception )].
                                         Item1.First( x => x.ArgCount == a.Length ).
                                         Create( a ) ) )
+                },
+                {
+                    typeof( MethodBase ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_System_Reflection_MethodBase(
+                          ( MethodBase ) m_Creators[typeof( MethodBase )].
+                                         Item1.First( x => x.ArgCount == a.Length ).
+                                         Create( a ) ) )
+                },
+                {
+                    typeof( RuntimeMethodHandle ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_System_RuntimeMethodHandle(
+                          ( RuntimeMethodHandle ) m_Creators[typeof( RuntimeMethodHandle )].
+                                                  Item1.First( x => x.ArgCount == a.Length ).
+                                                  Create( a ) ) )
+                },
+                {
+                    typeof( Binder ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_System_Reflection_Binder(
+                          ( Binder ) m_Creators[typeof( Binder )].
+                                     Item1.First( x => x.ArgCount == a.Length ).
+                                     Create( a ) ) )
+                },
+                {
+                    typeof( FieldInfo ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_System_Reflection_FieldInfo(
+                          ( FieldInfo ) m_Creators[typeof( FieldInfo )].
+                                        Item1.First( x => x.ArgCount == a.Length ).
+                                        Create( a ) ) )
+                },
+                {
+                    typeof( RuntimeTypeHandle ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_System_RuntimeTypeHandle(
+                          ( RuntimeTypeHandle ) m_Creators[typeof( RuntimeTypeHandle )].
+                                                Item1.First( x => x.ArgCount == a.Length ).
+                                                Create( a ) ) )
+                },
+                {
+                    typeof( PropertyInfo ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_System_Reflection_PropertyInfo(
+                          ( PropertyInfo ) m_Creators[typeof( PropertyInfo )].
+                                           Item1.First( x => x.ArgCount == a.Length ).
+                                           Create( a ) ) )
+                },
+                {
+                    typeof( MethodBody ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_System_Reflection_MethodBody(
+                          ( MethodBody ) m_Creators[typeof( MethodBody )].
+                                         Item1.First( x => x.ArgCount == a.Length ).
+                                         Create( a ) ) )
                 },
                 {
                     typeof( TaskAwaiter ),
@@ -1227,376 +1206,44 @@ namespace BadScript.Unity.Wrapper.Core
                                                  Create( a ) ) )
                 },
                 {
-                    typeof( ITransform ),
+                    typeof( TypeFilter ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_ITransform(
-                          ( ITransform ) m_Creators[typeof( ITransform )].
+                      a => new BSWrapperObject_System_Reflection_TypeFilter(
+                          ( TypeFilter ) m_Creators[typeof( TypeFilter )].
                                          Item1.First( x => x.ArgCount == a.Length ).
                                          Create( a ) ) )
                 },
                 {
-                    typeof( IExperimentalFeatures ),
+                    typeof( X509Certificate ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_IExperimentalFeatures(
-                          ( IExperimentalFeatures ) m_Creators[typeof( IExperimentalFeatures )].
-                                                    Item1.First( x => x.ArgCount == a.Length ).
-                                                    Create( a ) ) )
-                },
-                {
-                    typeof( ITransitionAnimations ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_Experimental_ITransitionAnimations(
-                          ( ITransitionAnimations ) m_Creators[typeof( ITransitionAnimations )].
-                                                    Item1.First( x => x.ArgCount == a.Length ).
-                                                    Create( a ) ) )
-                },
-                {
-                    typeof( IPanel ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_IPanel(
-                          ( IPanel ) m_Creators[typeof( IPanel )].
-                                     Item1.First( x => x.ArgCount == a.Length ).
-                                     Create( a ) ) )
-                },
-                {
-                    typeof( EventDispatcher ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_EventDispatcher(
-                          ( EventDispatcher ) m_Creators[typeof( EventDispatcher )].
+                      a => new BSWrapperObject_System_Security_Cryptography_X509Certificates_X509Certificate(
+                          ( X509Certificate ) m_Creators[typeof( X509Certificate )].
                                               Item1.First( x => x.ArgCount == a.Length ).
                                               Create( a ) ) )
                 },
                 {
-                    typeof( ContextualMenuManager ),
+                    typeof( SecureString ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_ContextualMenuManager(
-                          ( ContextualMenuManager ) m_Creators[typeof( ContextualMenuManager )].
-                                                    Item1.First( x => x.ArgCount == a.Length ).
-                                                    Create( a ) ) )
-                },
-                {
-                    typeof( IVisualElementScheduler ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_IVisualElementScheduler(
-                          ( IVisualElementScheduler ) m_Creators[typeof( IVisualElementScheduler )].
-                                                      Item1.First( x => x.ArgCount == a.Length ).
-                                                      Create( a ) ) )
-                },
-                {
-                    typeof( IVisualElementScheduledItem ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_IVisualElementScheduledItem(
-                          ( IVisualElementScheduledItem ) m_Creators[typeof( IVisualElementScheduledItem )].
-                                                          Item1.First( x => x.ArgCount == a.Length ).
-                                                          Create( a ) ) )
-                },
-                {
-                    typeof( IStyle ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_IStyle(
-                          ( IStyle ) m_Creators[typeof( IStyle )].
-                                     Item1.First( x => x.ArgCount == a.Length ).
-                                     Create( a ) ) )
-                },
-                {
-                    typeof( StyleColor ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_StyleColor(
-                          ( StyleColor ) m_Creators[typeof( StyleColor )].
-                                         Item1.First( x => x.ArgCount == a.Length ).
-                                         Create( a ) ) )
-                },
-                {
-                    typeof( StyleBackground ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_StyleBackground(
-                          ( StyleBackground ) m_Creators[typeof( StyleBackground )].
-                                              Item1.First( x => x.ArgCount == a.Length ).
-                                              Create( a ) ) )
-                },
-                {
-                    typeof( Background ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_Background(
-                          ( Background ) m_Creators[typeof( Background )].
-                                         Item1.First( x => x.ArgCount == a.Length ).
-                                         Create( a ) ) )
-                },
-                {
-                    typeof( Texture2D ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_Texture2D(
-                          ( Texture2D ) m_Creators[typeof( Texture2D )].
-                                        Item1.First( x => x.ArgCount == a.Length ).
-                                        Create( a ) ) )
-                },
-                {
-                    typeof( VectorImage ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_VectorImage(
-                          ( VectorImage ) m_Creators[typeof( VectorImage )].
-                                          Item1.First( x => x.ArgCount == a.Length ).
-                                          Create( a ) ) )
-                },
-                {
-                    typeof( StyleLength ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_StyleLength(
-                          ( StyleLength ) m_Creators[typeof( StyleLength )].
-                                          Item1.First( x => x.ArgCount == a.Length ).
-                                          Create( a ) ) )
-                },
-                {
-                    typeof( Length ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_Length(
-                          ( Length ) m_Creators[typeof( Length )].
-                                     Item1.First( x => x.ArgCount == a.Length ).
-                                     Create( a ) ) )
-                },
-                {
-                    typeof( StyleFloat ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_StyleFloat(
-                          ( StyleFloat ) m_Creators[typeof( StyleFloat )].
-                                         Item1.First( x => x.ArgCount == a.Length ).
-                                         Create( a ) ) )
-                },
-                {
-                    typeof( StyleCursor ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_StyleCursor(
-                          ( StyleCursor ) m_Creators[typeof( StyleCursor )].
-                                          Item1.First( x => x.ArgCount == a.Length ).
-                                          Create( a ) ) )
-                },
-                {
-                    typeof( Cursor ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_Cursor(
-                          ( Cursor ) m_Creators[typeof( Cursor )].
-                                     Item1.First( x => x.ArgCount == a.Length ).
-                                     Create( a ) ) )
-                },
-                {
-                    typeof( StyleFont ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_StyleFont(
-                          ( StyleFont ) m_Creators[typeof( StyleFont )].
-                                        Item1.First( x => x.ArgCount == a.Length ).
-                                        Create( a ) ) )
-                },
-                {
-                    typeof( Font ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_Font(
-                          ( Font ) m_Creators[typeof( Font )].Item1.First( x => x.ArgCount == a.Length ).Create( a ) ) )
-                },
-                {
-                    typeof( StyleInt ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_StyleInt(
-                          ( StyleInt ) m_Creators[typeof( StyleInt )].
-                                       Item1.First( x => x.ArgCount == a.Length ).
-                                       Create( a ) ) )
-                },
-                {
-                    typeof( ICustomStyle ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_ICustomStyle(
-                          ( ICustomStyle ) m_Creators[typeof( ICustomStyle )].
+                      a => new BSWrapperObject_System_Security_SecureString(
+                          ( SecureString ) m_Creators[typeof( SecureString )].
                                            Item1.First( x => x.ArgCount == a.Length ).
                                            Create( a ) ) )
                 },
                 {
-                    typeof( VisualElementStyleSheetSet ),
+                    typeof( ICustomAttributeProvider ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_VisualElementStyleSheetSet(
-                          ( VisualElementStyleSheetSet ) m_Creators[typeof( VisualElementStyleSheetSet )].
-                                                         Item1.First( x => x.ArgCount == a.Length ).
-                                                         Create( a ) ) )
+                      a => new BSWrapperObject_System_Reflection_ICustomAttributeProvider(
+                          ( ICustomAttributeProvider ) m_Creators[typeof( ICustomAttributeProvider )].
+                                                       Item1.First( x => x.ArgCount == a.Length ).
+                                                       Create( a ) ) )
                 },
                 {
-                    typeof( StyleSheet ),
+                    typeof( Delegate ),
                     ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_StyleSheet(
-                          ( StyleSheet ) m_Creators[typeof( StyleSheet )].
-                                         Item1.First( x => x.ArgCount == a.Length ).
-                                         Create( a ) ) )
-                },
-                {
-                    typeof( IResolvedStyle ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_IResolvedStyle(
-                          ( IResolvedStyle ) m_Creators[typeof( IResolvedStyle )].
-                                             Item1.First( x => x.ArgCount == a.Length ).
-                                             Create( a ) ) )
-                },
-                {
-                    typeof( Scroller ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_Scroller(
-                          ( Scroller ) m_Creators[typeof( Scroller )].
+                      a => new BSWrapperObject_System_Delegate(
+                          ( Delegate ) m_Creators[typeof( Delegate )].
                                        Item1.First( x => x.ArgCount == a.Length ).
                                        Create( a ) ) )
-                },
-                {
-                    typeof( Slider ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_Slider(
-                          ( Slider ) m_Creators[typeof( Slider )].
-                                     Item1.First( x => x.ArgCount == a.Length ).
-                                     Create( a ) ) )
-                },
-                {
-                    typeof( Label ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_Label(
-                          ( Label ) m_Creators[typeof( Label )].
-                                    Item1.First( x => x.ArgCount == a.Length ).
-                                    Create( a ) ) )
-                },
-                {
-                    typeof( IBinding ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_IBinding(
-                          ( IBinding ) m_Creators[typeof( IBinding )].
-                                       Item1.First( x => x.ArgCount == a.Length ).
-                                       Create( a ) ) )
-                },
-                {
-                    typeof( RepeatButton ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UIElements_RepeatButton(
-                          ( RepeatButton ) m_Creators[typeof( RepeatButton )].
-                                           Item1.First( x => x.ArgCount == a.Length ).
-                                           Create( a ) ) )
-                },
-                {
-                    typeof( Text ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UI_Text(
-                          ( Text ) m_Creators[typeof( Text )].Item1.First( x => x.ArgCount == a.Length ).Create( a ) ) )
-                },
-                {
-                    typeof( TextGenerator ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_TextGenerator(
-                          ( TextGenerator ) m_Creators[typeof( TextGenerator )].
-                                            Item1.First( x => x.ArgCount == a.Length ).
-                                            Create( a ) ) )
-                },
-                {
-                    typeof( TextGenerationSettings ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_TextGenerationSettings(
-                          ( TextGenerationSettings ) m_Creators[typeof( TextGenerationSettings )].
-                                                     Item1.First( x => x.ArgCount == a.Length ).
-                                                     Create( a ) ) )
-                },
-                {
-                    typeof( Canvas ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_Canvas(
-                          ( Canvas ) m_Creators[typeof( Canvas )].
-                                     Item1.First( x => x.ArgCount == a.Length ).
-                                     Create( a ) ) )
-                },
-                {
-                    typeof( CanvasRenderer ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_CanvasRenderer(
-                          ( CanvasRenderer ) m_Creators[typeof( CanvasRenderer )].
-                                             Item1.First( x => x.ArgCount == a.Length ).
-                                             Create( a ) ) )
-                },
-                {
-                    typeof( UnityAction ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_Events_UnityAction(
-                          ( UnityAction ) m_Creators[typeof( UnityAction )].
-                                          Item1.First( x => x.ArgCount == a.Length ).
-                                          Create( a ) ) )
-                },
-                {
-                    typeof( InputField ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UI_InputField(
-                          ( InputField ) m_Creators[typeof( InputField )].
-                                         Item1.First( x => x.ArgCount == a.Length ).
-                                         Create( a ) ) )
-                },
-                {
-                    typeof( Graphic ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UI_Graphic(
-                          ( Graphic ) m_Creators[typeof( Graphic )].
-                                      Item1.First( x => x.ArgCount == a.Length ).
-                                      Create( a ) ) )
-                },
-                {
-                    typeof( TouchScreenKeyboard ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_TouchScreenKeyboard(
-                          ( TouchScreenKeyboard ) m_Creators[typeof( TouchScreenKeyboard )].
-                                                  Item1.First( x => x.ArgCount == a.Length ).
-                                                  Create( a ) ) )
-                },
-                {
-                    typeof( RangeInt ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_RangeInt(
-                          ( RangeInt ) m_Creators[typeof( RangeInt )].
-                                       Item1.First( x => x.ArgCount == a.Length ).
-                                       Create( a ) ) )
-                },
-                {
-                    typeof( Navigation ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UI_Navigation(
-                          ( Navigation ) m_Creators[typeof( Navigation )].
-                                         Item1.First( x => x.ArgCount == a.Length ).
-                                         Create( a ) ) )
-                },
-                {
-                    typeof( Selectable ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UI_Selectable(
-                          ( Selectable ) m_Creators[typeof( Selectable )].
-                                         Item1.First( x => x.ArgCount == a.Length ).
-                                         Create( a ) ) )
-                },
-                {
-                    typeof( ColorBlock ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UI_ColorBlock(
-                          ( ColorBlock ) m_Creators[typeof( ColorBlock )].
-                                         Item1.First( x => x.ArgCount == a.Length ).
-                                         Create( a ) ) )
-                },
-                {
-                    typeof( SpriteState ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UI_SpriteState(
-                          ( SpriteState ) m_Creators[typeof( SpriteState )].
-                                          Item1.First( x => x.ArgCount == a.Length ).
-                                          Create( a ) ) )
-                },
-                {
-                    typeof( Sprite ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_Sprite(
-                          ( Sprite ) m_Creators[typeof( Sprite )].
-                                     Item1.First( x => x.ArgCount == a.Length ).
-                                     Create( a ) ) )
-                },
-                {
-                    typeof( AnimationTriggers ),
-                    ( new IWrapperObjectCreator[] { },
-                      a => new BSWrapperObject_UnityEngine_UI_AnimationTriggers(
-                          ( AnimationTriggers ) m_Creators[typeof( AnimationTriggers )].
-                                                Item1.First( x => x.ArgCount == a.Length ).
-                                                Create( a ) ) )
                 },
                 {
                     typeof( Image ),
@@ -1781,6 +1428,192 @@ namespace BadScript.Unity.Wrapper.Core
                           ( BaseEventData ) m_Creators[typeof( BaseEventData )].
                                             Item1.First( x => x.ArgCount == a.Length ).
                                             Create( a ) ) )
+                },
+                {
+                    typeof( Button ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_UI_Button(
+                          ( Button ) m_Creators[typeof( Button )].
+                                     Item1.First( x => x.ArgCount == a.Length ).
+                                     Create( a ) ) )
+                },
+                {
+                    typeof( InputField ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_UI_InputField(
+                          ( InputField ) m_Creators[typeof( InputField )].
+                                         Item1.First( x => x.ArgCount == a.Length ).
+                                         Create( a ) ) )
+                },
+                {
+                    typeof( Text ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_UI_Text(
+                          ( Text ) m_Creators[typeof( Text )].Item1.First( x => x.ArgCount == a.Length ).Create( a ) ) )
+                },
+                {
+                    typeof( TextGenerator ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_TextGenerator(
+                          ( TextGenerator ) m_Creators[typeof( TextGenerator )].
+                                            Item1.First( x => x.ArgCount == a.Length ).
+                                            Create( a ) ) )
+                },
+                {
+                    typeof( TextGenerationSettings ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_TextGenerationSettings(
+                          ( TextGenerationSettings ) m_Creators[typeof( TextGenerationSettings )].
+                                                     Item1.First( x => x.ArgCount == a.Length ).
+                                                     Create( a ) ) )
+                },
+                {
+                    typeof( Font ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_Font(
+                          ( Font ) m_Creators[typeof( Font )].Item1.First( x => x.ArgCount == a.Length ).Create( a ) ) )
+                },
+                {
+                    typeof( TouchScreenKeyboard ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_TouchScreenKeyboard(
+                          ( TouchScreenKeyboard ) m_Creators[typeof( TouchScreenKeyboard )].
+                                                  Item1.First( x => x.ArgCount == a.Length ).
+                                                  Create( a ) ) )
+                },
+                {
+                    typeof( RangeInt ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_RangeInt(
+                          ( RangeInt ) m_Creators[typeof( RangeInt )].
+                                       Item1.First( x => x.ArgCount == a.Length ).
+                                       Create( a ) ) )
+                },
+                {
+                    typeof( Event ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_Event(
+                          ( Event ) m_Creators[typeof( Event )].
+                                    Item1.First( x => x.ArgCount == a.Length ).
+                                    Create( a ) ) )
+                },
+                {
+                    typeof( MeshFilter ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_MeshFilter(
+                          ( MeshFilter ) m_Creators[typeof( MeshFilter )].
+                                         Item1.First( x => x.ArgCount == a.Length ).
+                                         Create( a ) ) )
+                },
+                {
+                    typeof( MeshRenderer ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_MeshRenderer(
+                          ( MeshRenderer ) m_Creators[typeof( MeshRenderer )].
+                                           Item1.First( x => x.ArgCount == a.Length ).
+                                           Create( a ) ) )
+                },
+                {
+                    typeof( Resources ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_Resources(
+                          ( Resources ) m_Creators[typeof( Resources )].
+                                        Item1.First( x => x.ArgCount == a.Length ).
+                                        Create( a ) ) )
+                },
+                {
+                    typeof( ResourceRequest ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_ResourceRequest(
+                          ( ResourceRequest ) m_Creators[typeof( ResourceRequest )].
+                                              Item1.First( x => x.ArgCount == a.Length ).
+                                              Create( a ) ) )
+                },
+                {
+                    typeof( MeshCollider ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_MeshCollider(
+                          ( MeshCollider ) m_Creators[typeof( MeshCollider )].
+                                           Item1.First( x => x.ArgCount == a.Length ).
+                                           Create( a ) ) )
+                },
+                {
+                    typeof( SphereCollider ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_SphereCollider(
+                          ( SphereCollider ) m_Creators[typeof( SphereCollider )].
+                                             Item1.First( x => x.ArgCount == a.Length ).
+                                             Create( a ) ) )
+                },
+                {
+                    typeof( BoxCollider ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_BoxCollider(
+                          ( BoxCollider ) m_Creators[typeof( BoxCollider )].
+                                          Item1.First( x => x.ArgCount == a.Length ).
+                                          Create( a ) ) )
+                },
+                {
+                    typeof( CapsuleCollider ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_CapsuleCollider(
+                          ( CapsuleCollider ) m_Creators[typeof( CapsuleCollider )].
+                                              Item1.First( x => x.ArgCount == a.Length ).
+                                              Create( a ) ) )
+                },
+                {
+                    typeof( LayerMask ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_LayerMask(
+                          ( LayerMask ) m_Creators[typeof( LayerMask )].
+                                        Item1.First( x => x.ArgCount == a.Length ).
+                                        Create( a ) ) )
+                },
+                {
+                    typeof( ScriptableObject ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_ScriptableObject(
+                          ( ScriptableObject ) m_Creators[typeof( ScriptableObject )].
+                                               Item1.First( x => x.ArgCount == a.Length ).
+                                               Create( a ) ) )
+                },
+                {
+                    typeof( Mathf ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_Mathf(
+                          ( Mathf ) m_Creators[typeof( Mathf )].
+                                    Item1.First( x => x.ArgCount == a.Length ).
+                                    Create( a ) ) )
+                },
+                {
+                    typeof( Debug ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_Debug(
+                          ( Debug ) m_Creators[typeof( Debug )].
+                                    Item1.First( x => x.ArgCount == a.Length ).
+                                    Create( a ) ) )
+                },
+                {
+                    typeof( ILogger ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_ILogger(
+                          ( ILogger ) m_Creators[typeof( ILogger )].
+                                      Item1.First( x => x.ArgCount == a.Length ).
+                                      Create( a ) ) )
+                },
+                {
+                    typeof( ILogHandler ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_ILogHandler(
+                          ( ILogHandler ) m_Creators[typeof( ILogHandler )].
+                                          Item1.First( x => x.ArgCount == a.Length ).
+                                          Create( a ) ) )
+                },
+                {
+                    typeof( Time ),
+                    ( new IWrapperObjectCreator[] { },
+                      a => new BSWrapperObject_UnityEngine_Time(
+                          ( Time ) m_Creators[typeof( Time )].Item1.First( x => x.ArgCount == a.Length ).Create( a ) ) )
                 },
 
             };

@@ -5,6 +5,7 @@ using BadScript.Tools.CodeGenerator.Runtime;
 using BadScript.Utils.Reflection;
 using UnityEngine;
 using UnityEngine.EventSystems;
+#pragma warning disable 618
 
 namespace BadScript.Unity.Wrapper.Core.Generated
 {

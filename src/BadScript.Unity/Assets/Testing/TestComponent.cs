@@ -12,6 +12,7 @@ public class TestComponent : MonoBehaviour
 
     private void Start()
     {
+
         decimal d = MyValue.Compute( 2, 5 );
         Debug.Log( "Value: " + d );
 

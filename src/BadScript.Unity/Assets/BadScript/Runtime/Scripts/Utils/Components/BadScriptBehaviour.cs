@@ -10,7 +10,7 @@ namespace BadScript.Unity
         [Note(
             "Calls the MonoBehaviour Functions inside the BadScript Source.\nAvailable Functions:\n\t'Start'\n\t'Update'\n\t'FixedUpdate'\n" )]
         [SerializeField]
-        private BadScriptSource m_ScriptSource;
+        private BadScriptSource m_ScriptSource = null;
         private ABSObject m_Start;
         private ABSObject m_Update;
         private ABSObject m_FixedUpdate;

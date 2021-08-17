@@ -562,6 +562,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1438217893001237907, guid: 379f0641fce9bd945b79b8ca2076d8ed, type: 3}
+      propertyPath: m_ConsolePlugins.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438217893001237907, guid: 379f0641fce9bd945b79b8ca2076d8ed, type: 3}
+      propertyPath: m_ConsolePlugins.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: aa7f3d8bd6c8a8c40900da6dfd19b6e7, type: 2}
     - target: {fileID: 1438217893001237916, guid: 379f0641fce9bd945b79b8ca2076d8ed, type: 3}
       propertyPath: m_Name
       value: ConsoleWindow

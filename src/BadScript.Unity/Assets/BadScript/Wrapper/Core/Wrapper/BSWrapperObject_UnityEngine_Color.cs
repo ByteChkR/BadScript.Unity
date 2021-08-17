@@ -31,6 +31,24 @@ namespace BadScript.Unity.Wrapper.Core.Generated
                 () => new BSObject( ( decimal ) m_InternalObject.maxColorComponent ),
                 null );
 
+            m_Properties["get_Item"] = new BSFunctionReference(
+                new BSFunction(
+                    "function get_Item(index)",
+                    a => new BSObject( ( decimal ) m_InternalObject[WrapperHelper.UnwrapObject < int >( a[0] )] ),
+                    1 ) );
+
+            m_Properties["set_Item"] = new BSFunctionReference(
+                new BSFunction(
+                    "function set_Item(index, value)",
+                    a =>
+                    {
+                        m_InternalObject[WrapperHelper.UnwrapObject < int >( a[0] )] =
+                            WrapperHelper.UnwrapObject < float >( a[1] );
+
+                        return new BSObject( null );
+                    },
+                    2 ) );
+
             m_Properties["r"] = new BSReflectionReference(
                 () => new BSObject( ( decimal ) m_InternalObject.r ),
                 x => m_InternalObject.r = WrapperHelper.UnwrapObject < float >( x ) );

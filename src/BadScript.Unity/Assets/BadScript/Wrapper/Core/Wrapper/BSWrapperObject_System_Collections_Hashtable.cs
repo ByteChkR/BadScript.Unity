@@ -16,6 +16,25 @@ namespace BadScript.Unity.Wrapper.Core.Generated
 
         public BSWrapperObject_System_Collections_Hashtable( Hashtable obj ) : base( obj )
         {
+            m_Properties["get_Item"] = new BSFunctionReference(
+                new BSFunction(
+                    "function get_Item(key)",
+                    a => new BSWrapperObject_System_Object(
+                        m_InternalObject[WrapperHelper.UnwrapObject < object >( a[0] )] ),
+                    1 ) );
+
+            m_Properties["set_Item"] = new BSFunctionReference(
+                new BSFunction(
+                    "function set_Item(key, value)",
+                    a =>
+                    {
+                        m_InternalObject[WrapperHelper.UnwrapObject < object >( a[0] )] =
+                            WrapperHelper.UnwrapObject < object >( a[1] );
+
+                        return new BSObject( null );
+                    },
+                    2 ) );
+
             m_Properties["IsReadOnly"] = new BSReflectionReference(
                 () => m_InternalObject.IsReadOnly ? BSObject.One : BSObject.Zero,
                 null );

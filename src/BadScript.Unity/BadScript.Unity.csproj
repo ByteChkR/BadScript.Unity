@@ -59,13 +59,13 @@
     <Compile Include="Assets\BadScript\Runtime\Scripts\Source\BadScriptSource.cs" />
     <Compile Include="Assets\BadScript\Runtime\Scripts\BadScriptInterfaceObject.cs" />
     <Compile Include="Assets\BadScript\Runtime\Scripts\Utils\Expressions\BadScriptExpressionArgument.cs" />
-    <Compile Include="Assets\BadScript\Runtime\Scripts\BadScriptRuntimeComponent.cs" />
-    <Compile Include="Assets\BadScript\Runtime\Scripts\Utils\Expressions\BadScriptValue.cs" />
     <Compile Include="Assets\BadScript\Runtime\Scripts\Utils\Components\BadScriptBehaviour.cs" />
     <Compile Include="Assets\BadScript\Runtime\Scripts\Source\BadScriptFileSource.cs" />
+    <Compile Include="Assets\BadScript\Runtime\Scripts\Utils\HelpDrawer.cs" />
+    <Compile Include="Assets\BadScript\Runtime\Scripts\BadScriptRuntimeComponent.cs" />
+    <Compile Include="Assets\BadScript\Runtime\Scripts\Utils\Expressions\BadScriptValue.cs" />
     <Compile Include="Assets\BadScript\Runtime\Scripts\Utils\Expressions\BadScriptExpressionArgumentTypeHint.cs" />
     <Compile Include="Assets\BadScript\Runtime\Scripts\Utils\Singleton.cs" />
-    <Compile Include="Assets\BadScript\Runtime\Scripts\Utils\HelpDrawer.cs" />
     <Compile Include="Assets\BadScript\Runtime\Scripts\Source\BadScriptTextSource.cs" />
   </ItemGroup>
   <ItemGroup>

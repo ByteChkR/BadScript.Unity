@@ -13,7 +13,7 @@ public class BadScriptUnityCoreWrapperInterface : BadScriptInterfaceObject
     {
         WrapperHelper.AllowRecurseToString = false;
 
-        return new BadScriptWrapperInterface( "unity_core", new UnityCoreStaticDB(), new UnityCoreCtorDB() );
+        return new BadScriptWrapperInterface( "unity_core", new UnityCoreStaticDB(), new UnityCoreCTorDB() );
     }
 
     #endregion

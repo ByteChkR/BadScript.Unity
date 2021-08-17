@@ -12,7 +12,47 @@ namespace BadScript.Unity.Tools.CodeGenerator.Editor
     public class CodeGenerator : EditorWindow
     {
         [SerializeField]
-        private string[] m_Types = new[] { nameof( GameObject ), nameof( MonoBehaviour ) };
+        private string[] m_Types = new[]
+        {
+            "UnityEngine.SceneManagement.SceneManager",
+            "UnityEngine.SceneManagement.Scene",
+            "UnityEngine.Object",
+            "UnityEngine.GameObject",
+            "UnityEngine.MonoBehaviour",
+            "UnityEngine.Physics",
+            "UnityEngine.Input",
+            "UnityEngine.UI.Slider",
+            "UnityEngine.UI.Button",
+            "UnityEngine.UI.InputField",
+            "UnityEngine.UI.Text",
+            "UnityEngine.UI.Image",
+            "UnityEngine.RectTransform",
+            "UnityEngine.MeshFilter",
+            "UnityEngine.Mesh",
+            "UnityEngine.MeshRenderer",
+            "UnityEngine.Material",
+            "UnityEngine.Texture",
+            "UnityEngine.Resources",
+            "UnityEngine.RigidBody",
+            "UnityEngine.RenderTexture",
+            "UnityEngine.PhysicMaterial",
+            "UnityEngine.Collider",
+            "UnityEngine.MeshCollider",
+            "UnityEngine.SphereCollider",
+            "UnityEngine.BoxCollider",
+            "UnityEngine.CapsuleCollider",
+            "UnityEngine.LayerMask",
+            "UnityEngine.Font",
+            "UnityEngine.Color",
+            "UnityEngine.Canvas",
+            "UnityEngine.CanvasRenderer",
+            "UnityEngine.Camera",
+            "UnityEngine.ScriptableObject",
+            "UnityEngine.Mathf",
+            "UnityEngine.Random",
+            "UnityEngine.Debug",
+            "UnityEngine.Time"
+        };
         [SerializeField]
         private string[] m_Defines = new string[0];
         private bool m_GenerateDB = false;
